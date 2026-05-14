@@ -6,120 +6,87 @@
 <title>Ravin Tech Solution</title>
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial, sans-serif;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
 html{scroll-behavior:smooth;}
-
-body{
-  background:#000;
-  color:white;
-  overflow-x:hidden;
-}
+body{background:#000;color:white;overflow-x:hidden;}
 
 .bg{
-  position:fixed;
-  inset:0;
-  z-index:-3;
+  position:fixed;inset:0;z-index:-4;
   background:
-    radial-gradient(circle at top left, rgba(255,0,0,.35), transparent 35%),
-    radial-gradient(circle at bottom right, rgba(180,0,0,.45), transparent 40%),
-    linear-gradient(135deg,#000,#050505,#160000,#000);
+  radial-gradient(circle at top left,rgba(255,0,0,.45),transparent 35%),
+  radial-gradient(circle at bottom right,rgba(120,0,0,.55),transparent 45%),
+  linear-gradient(135deg,#000,#090000,#1a0000,#000);
 }
 
 .particles{
-  position:fixed;
-  inset:0;
-  z-index:-2;
+  position:fixed;inset:0;z-index:-3;
   background-image:
-    linear-gradient(#ffffff12 1px, transparent 1px),
-    linear-gradient(90deg,#ffffff10 1px, transparent 1px);
+  linear-gradient(#ffffff12 1px,transparent 1px),
+  linear-gradient(90deg,#ffffff10 1px,transparent 1px);
   background-size:60px 60px;
   animation:moveGrid 15s linear infinite;
   opacity:.25;
 }
 
-.orb{
+.light-sweep{
   position:fixed;
-  width:190px;
-  height:190px;
-  border-radius:50%;
-  filter:blur(75px);
-  opacity:.55;
-  z-index:-1;
+  top:-40%;
+  left:-80%;
+  width:70%;
+  height:180%;
+  background:linear-gradient(90deg,transparent,rgba(255,0,0,.18),transparent);
+  transform:rotate(25deg);
+  animation:sweep 6s infinite;
+  z-index:-2;
 }
 
-.orb1{
-  background:#ff0000;
-  top:20%;
-  left:8%;
-  animation:orbMove1 8s infinite alternate;
+.orb{
+  position:fixed;width:190px;height:190px;border-radius:50%;
+  filter:blur(75px);opacity:.55;z-index:-1;
 }
-
-.orb2{
-  background:#990000;
-  top:58%;
-  right:8%;
-  animation:orbMove2 9s infinite alternate;
-}
-
-.orb3{
-  background:#ff3c3c;
-  bottom:8%;
-  left:38%;
-  animation:orbMove3 10s infinite alternate;
-}
+.orb1{background:#ff0000;top:20%;left:8%;animation:orbMove1 8s infinite alternate;}
+.orb2{background:#990000;top:58%;right:8%;animation:orbMove2 9s infinite alternate;}
+.orb3{background:#ff3c3c;bottom:8%;left:38%;animation:orbMove3 10s infinite alternate;}
 
 nav{
-  position:fixed;
-  top:15px;
-  left:50%;
+  position:fixed;top:15px;left:50%;
   transform:translateX(-50%);
-  width:92%;
-  max-width:1100px;
+  width:92%;max-width:1100px;
   padding:14px 18px;
   background:rgba(255,255,255,.08);
   backdrop-filter:blur(15px);
   border:1px solid rgba(255,255,255,.15);
   border-radius:25px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  display:flex;justify-content:space-between;align-items:center;
   z-index:99;
+  animation:navDrop 1s ease forwards;
 }
 
 .logo{
-  font-size:20px;
-  font-weight:900;
-  letter-spacing:1px;
+  font-size:20px;font-weight:900;letter-spacing:1px;
   animation:logoGlow 2s infinite alternate;
 }
-
 .logo span{color:#ff2b2b;}
 
 nav a{
-  color:white;
-  text-decoration:none;
-  font-size:14px;
-  margin-left:12px;
+  color:white;text-decoration:none;font-size:14px;margin-left:12px;
+  position:relative;
 }
+nav a::after{
+  content:"";position:absolute;left:0;bottom:-5px;width:0;height:2px;
+  background:#ff2b2b;transition:.3s;
+}
+nav a:hover::after{width:100%;}
 
 .hero{
   min-height:100vh;
   padding:120px 22px 60px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
+  display:flex;align-items:center;justify-content:center;text-align:center;
 }
 
 .hero-box{
   max-width:850px;
-  animation:fadeUp 1s ease;
+  animation:heroArrival 1.3s ease forwards;
 }
 
 .badge{
@@ -130,20 +97,22 @@ nav a{
   border:1px solid rgba(255,255,255,.2);
   color:#ff2b2b;
   margin-bottom:25px;
-  animation:slideDown 1s ease, glowBorder 2s infinite;
+  animation:badgePop 1.2s ease forwards, glowBorder 2s infinite;
 }
 
 .hero h1{
   font-size:58px;
   line-height:1.05;
   margin-bottom:25px;
-  animation:textZoom 1.2s ease;
+  animation:titleReveal 1.4s ease forwards;
 }
 
 .hero h1 span{
-  background:linear-gradient(90deg,#ff0000,#ff3b3b,#ffffff);
+  background:linear-gradient(90deg,#ff0000,#ff3b3b,#fff);
   -webkit-background-clip:text;
   color:transparent;
+  background-size:300%;
+  animation:gradientText 3s linear infinite;
 }
 
 .hero p{
@@ -153,6 +122,7 @@ nav a{
   font-size:18px;
   line-height:1.7;
   margin-bottom:35px;
+  animation:fadeSlide 1.6s ease forwards;
 }
 
 .btn{
@@ -167,21 +137,17 @@ nav a{
   font-size:18px;
   box-shadow:0 0 20px rgba(255,0,0,.6),0 0 50px rgba(255,0,0,.3);
   transition:.4s;
-  animation:gradientMove 4s linear infinite, pulseRed 2s infinite;
+  animation:buttonArrival 1.8s ease forwards,gradientMove 4s linear infinite,pulseRed 2s infinite;
 }
+.btn:hover{transform:scale(1.08) translateY(-4px);}
 
-.btn:hover{transform:scale(1.08);}
-
-section{
-  padding:80px 22px;
-}
+section{padding:80px 22px;}
 
 .title{
   text-align:center;
   font-size:38px;
   margin-bottom:45px;
 }
-
 .title span{color:#ff2b2b;}
 
 .cards{
@@ -208,31 +174,20 @@ section{
 .card::before{
   content:"";
   position:absolute;
-  top:0;
-  left:-100%;
-  width:100%;
-  height:100%;
+  top:0;left:-100%;
+  width:100%;height:100%;
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);
   transition:.5s;
 }
 
 .card:hover::before{left:100%;}
-
 .card:hover{
-  transform:translateY(-12px) scale(1.02);
-  box-shadow:0 0 35px rgba(255,0,0,.5);
+  transform:translateY(-14px) scale(1.03);
+  box-shadow:0 0 40px rgba(255,0,0,.6);
 }
 
-.card h3{
-  color:#ff2b2b;
-  font-size:22px;
-  margin-bottom:15px;
-}
-
-.card p{
-  color:#ddd;
-  line-height:1.6;
-}
+.card h3{color:#ff2b2b;font-size:22px;margin-bottom:15px;}
+.card p{color:#ddd;line-height:1.6;}
 
 .showcase{
   max-width:1050px;
@@ -264,8 +219,7 @@ section{
 .screen::before{
   content:"";
   position:absolute;
-  width:180px;
-  height:180px;
+  width:180px;height:180px;
   background:#ff0000;
   filter:blur(80px);
   animation:moveGlow 5s infinite alternate;
@@ -278,11 +232,7 @@ section{
   animation:textGlow 2s infinite alternate;
 }
 
-.showcase p{
-  color:#ddd;
-  line-height:1.8;
-  font-size:17px;
-}
+.showcase p{color:#ddd;line-height:1.8;font-size:17px;}
 
 .contact{text-align:center;}
 
@@ -293,6 +243,7 @@ section{
   border-radius:35px;
   background:linear-gradient(135deg,rgba(255,0,0,.18),rgba(60,0,0,.35));
   border:1px solid rgba(255,255,255,.18);
+  animation:contactPulse 3s infinite;
 }
 
 .whatsapp{
@@ -307,137 +258,117 @@ section{
   animation:whatsappBounce 2s infinite;
 }
 
-footer{
-  padding:25px;
-  text-align:center;
-  color:#aaa;
-}
+footer{padding:25px;text-align:center;color:#aaa;}
 
 .reveal{
   opacity:0;
-  transform:translateY(50px);
+  transform:translateY(70px) scale(.95);
   transition:1s;
 }
-
 .reveal.active{
   opacity:1;
-  transform:translateY(0);
+  transform:translateY(0) scale(1);
 }
 
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(50px);}
+/* PREMIUM ANIMATIONS */
+@keyframes navDrop{
+  from{opacity:0;transform:translateX(-50%) translateY(-50px);}
+  to{opacity:1;transform:translateX(-50%) translateY(0);}
+}
+@keyframes heroArrival{
+  from{opacity:0;transform:translateY(80px) scale(.9);}
+  to{opacity:1;transform:translateY(0) scale(1);}
+}
+@keyframes badgePop{
+  from{opacity:0;transform:scale(.5);}
+  to{opacity:1;transform:scale(1);}
+}
+@keyframes titleReveal{
+  from{opacity:0;letter-spacing:8px;filter:blur(10px);}
+  to{opacity:1;letter-spacing:0;filter:blur(0);}
+}
+@keyframes fadeSlide{
+  from{opacity:0;transform:translateY(40px);}
   to{opacity:1;transform:translateY(0);}
 }
-
+@keyframes buttonArrival{
+  from{opacity:0;transform:translateY(40px) scale(.8);}
+  to{opacity:1;transform:translateY(0) scale(1);}
+}
+@keyframes sweep{
+  0%{left:-80%;}
+  50%{left:120%;}
+  100%{left:120%;}
+}
+@keyframes gradientText{
+  0%{background-position:0%;}
+  100%{background-position:300%;}
+}
+@keyframes contactPulse{
+  0%,100%{box-shadow:0 0 25px rgba(255,0,0,.2);}
+  50%{box-shadow:0 0 55px rgba(255,0,0,.45);}
+}
 @keyframes moveGrid{
   from{background-position:0 0;}
   to{background-position:120px 120px;}
 }
-
 @keyframes float{
   0%,100%{transform:translateY(0);}
   50%{transform:translateY(-8px);}
 }
-
 @keyframes moveGlow{
   from{transform:translate(-80px,-50px);}
   to{transform:translate(80px,60px);}
 }
-
 @keyframes gradientMove{
   0%{background-position:0%;}
   100%{background-position:300%;}
 }
-
 @keyframes pulseRed{
-  0%,100%{
-    box-shadow:0 0 20px rgba(255,0,0,.6),0 0 50px rgba(255,0,0,.3);
-  }
-  50%{
-    box-shadow:0 0 35px rgba(255,0,0,1),0 0 90px rgba(255,0,0,.7);
-  }
+  0%,100%{box-shadow:0 0 20px rgba(255,0,0,.6),0 0 50px rgba(255,0,0,.3);}
+  50%{box-shadow:0 0 35px rgba(255,0,0,1),0 0 90px rgba(255,0,0,.7);}
 }
-
-@keyframes textZoom{
-  from{opacity:0;transform:scale(.7);}
-  to{opacity:1;transform:scale(1);}
-}
-
-@keyframes slideDown{
-  from{opacity:0;transform:translateY(-40px);}
-  to{opacity:1;transform:translateY(0);}
-}
-
 @keyframes glowBorder{
   0%,100%{box-shadow:0 0 10px #ff0000;}
   50%{box-shadow:0 0 25px #ff3b3b;}
 }
-
 @keyframes logoGlow{
   from{text-shadow:0 0 8px #ff0000;}
   to{text-shadow:0 0 25px #ff3b3b;}
 }
-
 @keyframes screenFloat{
   0%,100%{transform:translateY(0) rotate(0deg);}
   50%{transform:translateY(-12px) rotate(1deg);}
 }
-
 @keyframes textGlow{
   from{text-shadow:0 0 10px #ff0000;}
   to{text-shadow:0 0 35px #ff3b3b;}
 }
-
 @keyframes whatsappBounce{
   0%,100%{transform:translateY(0);}
   50%{transform:translateY(-8px);}
 }
-
 @keyframes orbMove1{
   from{transform:translate(0,0);}
   to{transform:translate(90px,120px);}
 }
-
 @keyframes orbMove2{
   from{transform:translate(0,0);}
   to{transform:translate(-100px,-80px);}
 }
-
 @keyframes orbMove3{
   from{transform:translate(0,0);}
   to{transform:translate(80px,-100px);}
 }
 
 @media(max-width:700px){
-  nav{
-    padding:12px;
-  }
-
-  nav a{
-    font-size:12px;
-    margin-left:7px;
-  }
-
-  .hero h1{
-    font-size:39px;
-  }
-
-  .hero p{
-    font-size:16px;
-  }
-
-  .title{
-    font-size:30px;
-  }
-
-  .showcase{
-    grid-template-columns:1fr;
-    padding:22px;
-  }
-
-  .screen{
-    height:250px;
-  }
+  nav{padding:12px;}
+  nav a{font-size:12px;margin-left:7px;}
+  .hero h1{font-size:39px;}
+  .hero p{font-size:16px;}
+  .title{font-size:30px;}
+  .showcase{grid-template-columns:1fr;padding:22px;}
+  .screen{height:250px;}
 }
 </style>
 </head>
@@ -446,6 +377,7 @@ footer{
 
 <div class="bg"></div>
 <div class="particles"></div>
+<div class="light-sweep"></div>
 <div class="orb orb1"></div>
 <div class="orb orb2"></div>
 <div class="orb orb3"></div>
@@ -462,59 +394,28 @@ footer{
 <div class="hero">
   <div class="hero-box">
     <div class="badge">Creative Digital Experience</div>
-
     <h1>We Create <span>Premium Websites</span> For Your Brand</h1>
-
-    <p>
-      Ravin Tech Solution builds modern, mobile-friendly, animated websites
-      with powerful design, smooth effects and professional style.
-    </p>
-
+    <p>Ravin Tech Solution builds modern, mobile-friendly, animated websites with powerful design, smooth effects and professional style.</p>
     <a href="#contact" class="btn">Start Your Website</a>
   </div>
 </div>
 
 <section id="services" class="reveal">
   <h2 class="title">Our <span>Services</span></h2>
-
   <div class="cards">
-    <div class="card">
-      <h3>Website Design</h3>
-      <p>Modern websites for business, personal brand, political pages and services.</p>
-    </div>
-
-    <div class="card">
-      <h3>Mobile Version</h3>
-      <p>Perfect design for Android, iPhone, tablet and desktop screens.</p>
-    </div>
-
-    <div class="card">
-      <h3>Landing Page</h3>
-      <p>High quality single page website for product launch, promotion and ads.</p>
-    </div>
-
-    <div class="card">
-      <h3>Animation UI</h3>
-      <p>Red glow, glass cards, smooth scroll effects and modern motion style.</p>
-    </div>
+    <div class="card"><h3>Website Design</h3><p>Modern websites for business, personal brand, political pages and services.</p></div>
+    <div class="card"><h3>Mobile Version</h3><p>Perfect design for Android, iPhone, tablet and desktop screens.</p></div>
+    <div class="card"><h3>Landing Page</h3><p>High quality single page website for product launch, promotion and ads.</p></div>
+    <div class="card"><h3>Animation UI</h3><p>Red glow, glass cards, smooth scroll effects and modern motion style.</p></div>
   </div>
 </section>
 
 <section id="work" class="reveal">
   <h2 class="title">Design <span>Experience</span></h2>
-
   <div class="showcase">
-    <div class="screen">
-      <h2>Ravin Tech<br>Solution</h2>
-    </div>
-
+    <div class="screen"><h2>Ravin Tech<br>Solution</h2></div>
     <div>
-      <p>
-        Your website is your online identity. We create attractive,
-        fast-loading and trust-building websites with a premium digital look.
-        This design uses black and red glow, glass effect cards,
-        animated background and smooth mobile layout.
-      </p>
+      <p>Your website is your online identity. We create attractive, fast-loading and trust-building websites with a premium digital look. This design uses black and red glow, glass effect cards, animated background and smooth mobile layout.</p>
     </div>
   </div>
 </section>
@@ -523,30 +424,26 @@ footer{
   <div class="contact-box">
     <h2 class="title">Create Your Website Today</h2>
     <p>Contact Ravin Tech Solution and start your digital journey.</p>
-
-    <a class="whatsapp" href="https://wa.me/919042458779">
-      Chat on WhatsApp
-    </a>
+    <a class="whatsapp" href="https://wa.me/919042458779">Chat on WhatsApp</a>
   </div>
 </section>
 
-<footer>
-  © 2026 Ravin Tech Solution. All Rights Reserved.
-</footer>
+<footer>© 2026 Ravin Tech Solution. All Rights Reserved.</footer>
 
 <script>
 const reveals = document.querySelectorAll(".reveal");
 
-window.addEventListener("scroll", () => {
-  reveals.forEach(section => {
+function revealOnScroll(){
+  reveals.forEach(section=>{
     const top = section.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
-
-    if(top < windowHeight - 100){
+    if(top < window.innerHeight - 100){
       section.classList.add("active");
     }
   });
-});
+}
+
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
 </script>
 
 </body>
