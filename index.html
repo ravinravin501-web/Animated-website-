@@ -44,21 +44,25 @@ height:100%;
 object-fit:cover;
 }
 
-/* WEBSITE INSIDE LAPTOP */
+/* =========================
+WEBSITE INSIDE LAPTOP
+========================= */
 
 .laptop-site{
 
 position:absolute;
 
-top:50%;
-left:50%;
+/* ADJUST TO MATCH LAPTOP SCREEN */
+
+top:52%;
+left:36%;
 
 transform:
 translate(-50%,-50%)
-scale(0.2);
+scale(0.75);
 
-width:320px;
-height:190px;
+width:260px;
+height:155px;
 
 background:
 linear-gradient(
@@ -70,7 +74,7 @@ linear-gradient(
 
 border:2px solid #38bdf8;
 
-border-radius:18px;
+border-radius:14px;
 
 display:flex;
 flex-direction:column;
@@ -81,51 +85,63 @@ text-align:center;
 
 opacity:0;
 
+overflow:hidden;
+
 box-shadow:
-0 0 40px rgba(56,189,248,0.7);
+0 0 30px rgba(56,189,248,0.7);
 
 animation:
-laptopZoom 5s ease forwards;
+laptopScreenZoom 5s ease forwards;
 
 animation-delay:1.5s;
 }
 
+/* LAPTOP TEXT */
+
 .laptop-site h1{
-font-size:24px;
+font-size:20px;
 color:#38bdf8;
-margin-bottom:10px;
-text-shadow:0 0 25px #38bdf8;
+margin-bottom:8px;
+
+text-shadow:
+0 0 20px #38bdf8;
 }
 
 .laptop-site p{
-font-size:13px;
-padding:0 20px;
+font-size:12px;
+line-height:1.5;
+padding:0 12px;
 color:#dbeafe;
-line-height:1.6;
 }
 
-/* ZOOM EFFECT */
+/* =========================
+LAPTOP SCREEN ZOOM
+========================= */
 
-@keyframes laptopZoom{
+@keyframes laptopScreenZoom{
 
 0%{
 opacity:0;
 
 transform:
 translate(-50%,-50%)
-scale(0.2);
+scale(0.25);
 }
 
 30%{
 opacity:1;
+
+transform:
+translate(-50%,-50%)
+scale(0.75);
 }
 
-60%{
+75%{
 opacity:1;
 
 transform:
 translate(-50%,-50%)
-scale(1);
+scale(0.9);
 }
 
 100%{
@@ -133,7 +149,7 @@ opacity:1;
 
 transform:
 translate(-50%,-50%)
-scale(6);
+scale(1.1);
 }
 
 }
@@ -177,6 +193,7 @@ NAVBAR
 
 .navbar{
 padding:20px 7%;
+
 display:flex;
 justify-content:space-between;
 align-items:center;
@@ -193,7 +210,9 @@ border-bottom:
 font-size:26px;
 font-weight:bold;
 color:#38bdf8;
-text-shadow:0 0 20px #38bdf8;
+
+text-shadow:
+0 0 20px #38bdf8;
 }
 
 .nav a{
@@ -316,7 +335,9 @@ scale(1);
 
 }
 
-/* TEXT */
+/* =========================
+TEXT
+========================= */
 
 .hero h1{
 font-size:42px;
@@ -333,7 +354,9 @@ line-height:1.7;
 color:#dbeafe;
 }
 
-/* BUTTON */
+/* =========================
+BUTTON
+========================= */
 
 .btn{
 margin-top:25px;
@@ -430,7 +453,9 @@ border-top:
 margin-bottom:20px;
 }
 
-/* WHATSAPP */
+/* =========================
+WHATSAPP BUTTON
+========================= */
 
 .whatsapp-btn{
 display:inline-block;
@@ -498,13 +523,28 @@ font-size:28px;
 font-size:14px;
 }
 
+/* MOBILE LAPTOP POSITION */
+
 .laptop-site{
-width:240px;
-height:150px;
+
+top:52%;
+left:50%;
+
+width:210px;
+height:125px;
+
+transform:
+translate(-50%,-50%)
+scale(0.65);
+
 }
 
 .laptop-site h1{
-font-size:18px;
+font-size:16px;
+}
+
+.laptop-site p{
+font-size:10px;
 }
 
 }
@@ -650,6 +690,8 @@ Contact on WhatsApp
 
 </div>
 
+<!-- SCRIPT -->
+
 <script>
 
 const intro =
@@ -659,8 +701,8 @@ const website =
 document.getElementById("website");
 
 /*
-After laptop zoom →
-open full website
+After laptop intro →
+show full website
 */
 
 setTimeout(()=>{
