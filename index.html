@@ -23,11 +23,10 @@ body{
   overflow-x:hidden;
 }
 
-/* BACKGROUND */
 .bg{
   position:fixed;
   inset:0;
-  z-index:-2;
+  z-index:-3;
   background:
     radial-gradient(circle at 20% 20%, #2411ff55, transparent 35%),
     radial-gradient(circle at 80% 30%, #b000ff55, transparent 35%),
@@ -38,7 +37,7 @@ body{
 .particles{
   position:fixed;
   inset:0;
-  z-index:-1;
+  z-index:-2;
   background-image:
     linear-gradient(#ffffff22 1px, transparent 1px),
     linear-gradient(90deg,#ffffff18 1px, transparent 1px);
@@ -47,7 +46,37 @@ body{
   opacity:.25;
 }
 
-/* NAV */
+.orb{
+  position:fixed;
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  filter:blur(70px);
+  opacity:.6;
+  z-index:-1;
+}
+
+.orb1{
+  background:#00d9ff;
+  top:20%;
+  left:10%;
+  animation:orbMove1 8s infinite alternate;
+}
+
+.orb2{
+  background:#b000ff;
+  top:60%;
+  right:10%;
+  animation:orbMove2 9s infinite alternate;
+}
+
+.orb3{
+  background:#ff3df2;
+  bottom:10%;
+  left:40%;
+  animation:orbMove3 10s infinite alternate;
+}
+
 nav{
   position:fixed;
   top:15px;
@@ -70,6 +99,7 @@ nav{
   font-size:20px;
   font-weight:900;
   letter-spacing:1px;
+  animation:logoGlow 2s infinite alternate;
 }
 
 .logo span{
@@ -83,7 +113,6 @@ nav a{
   margin-left:12px;
 }
 
-/* HERO */
 .hero{
   min-height:100vh;
   padding:120px 22px 60px;
@@ -106,12 +135,14 @@ nav a{
   border:1px solid rgba(255,255,255,.2);
   color:#00d9ff;
   margin-bottom:25px;
+  animation:slideDown 1s ease, glowBorder 2s infinite;
 }
 
 .hero h1{
   font-size:58px;
   line-height:1.05;
   margin-bottom:25px;
+  animation:textZoom 1.2s ease;
 }
 
 .hero h1 span{
@@ -132,21 +163,21 @@ nav a{
 .btn{
   display:inline-block;
   padding:16px 30px;
-  background:linear-gradient(90deg,#00d9ff,#8b00ff);
+  background:linear-gradient(90deg,#00d9ff,#8b00ff,#ff3df2);
+  background-size:300%;
   color:white;
   text-decoration:none;
   border-radius:40px;
   font-weight:bold;
   box-shadow:0 0 35px #00d9ff80;
   transition:.3s;
+  animation:gradientMove 3s infinite linear, pulseGlow 2s infinite;
 }
 
 .btn:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 55px #b000ff;
+  transform:scale(1.08);
 }
 
-/* SECTIONS */
 section{
   padding:80px 22px;
 }
@@ -161,7 +192,6 @@ section{
   color:#00d9ff;
 }
 
-/* CARDS */
 .cards{
   max-width:1100px;
   margin:auto;
@@ -171,6 +201,8 @@ section{
 }
 
 .card{
+  position:relative;
+  overflow:hidden;
   background:rgba(255,255,255,.08);
   border:1px solid rgba(255,255,255,.15);
   backdrop-filter:blur(18px);
@@ -179,6 +211,21 @@ section{
   min-height:210px;
   transition:.4s;
   animation:float 4s ease-in-out infinite;
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);
+  transition:.5s;
+}
+
+.card:hover::before{
+  left:100%;
 }
 
 .card:hover{
@@ -197,7 +244,6 @@ section{
   line-height:1.6;
 }
 
-/* SHOWCASE */
 .showcase{
   max-width:1050px;
   margin:auto;
@@ -215,15 +261,14 @@ section{
 .screen{
   height:320px;
   border-radius:25px;
-  background:
-    linear-gradient(135deg,#111,#090030),
-    radial-gradient(circle,#00d9ff,transparent);
+  background:linear-gradient(135deg,#111,#090030);
   border:1px solid rgba(255,255,255,.18);
   display:flex;
   align-items:center;
   justify-content:center;
   position:relative;
   overflow:hidden;
+  animation:screenFloat 4s ease-in-out infinite;
 }
 
 .screen::before{
@@ -240,6 +285,7 @@ section{
   position:relative;
   font-size:34px;
   text-align:center;
+  animation:textGlow 2s infinite alternate;
 }
 
 .showcase p{
@@ -248,7 +294,6 @@ section{
   font-size:17px;
 }
 
-/* CONTACT */
 .contact{
   text-align:center;
 }
@@ -271,6 +316,7 @@ section{
   text-decoration:none;
   border-radius:40px;
   font-weight:bold;
+  animation:whatsappBounce 2s infinite;
 }
 
 footer{
@@ -279,7 +325,6 @@ footer{
   color:#aaa;
 }
 
-/* ANIMATION */
 .reveal{
   opacity:0;
   transform:translateY(50px);
@@ -311,7 +356,66 @@ footer{
   to{transform:translate(80px,60px);}
 }
 
-/* MOBILE */
+@keyframes gradientMove{
+  0%{background-position:0%;}
+  100%{background-position:300%;}
+}
+
+@keyframes pulseGlow{
+  0%,100%{box-shadow:0 0 20px #00d9ff;}
+  50%{box-shadow:0 0 55px #b000ff;}
+}
+
+@keyframes textZoom{
+  from{opacity:0;transform:scale(.7);}
+  to{opacity:1;transform:scale(1);}
+}
+
+@keyframes slideDown{
+  from{opacity:0;transform:translateY(-40px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes glowBorder{
+  0%,100%{box-shadow:0 0 10px #00d9ff;}
+  50%{box-shadow:0 0 25px #ff3df2;}
+}
+
+@keyframes logoGlow{
+  from{text-shadow:0 0 8px #00d9ff;}
+  to{text-shadow:0 0 25px #ff3df2;}
+}
+
+@keyframes screenFloat{
+  0%,100%{transform:translateY(0) rotate(0deg);}
+  50%{transform:translateY(-12px) rotate(1deg);}
+}
+
+@keyframes textGlow{
+  from{text-shadow:0 0 10px #00d9ff;}
+  to{text-shadow:0 0 35px #ff3df2;}
+}
+
+@keyframes whatsappBounce{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-8px);}
+}
+
+@keyframes orbMove1{
+  from{transform:translate(0,0);}
+  to{transform:translate(90px,120px);}
+}
+
+@keyframes orbMove2{
+  from{transform:translate(0,0);}
+  to{transform:translate(-100px,-80px);}
+}
+
+@keyframes orbMove3{
+  from{transform:translate(0,0);}
+  to{transform:translate(80px,-100px);}
+}
+
 @media(max-width:700px){
   nav{
     padding:12px;
@@ -350,6 +454,9 @@ footer{
 
 <div class="bg"></div>
 <div class="particles"></div>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
 
 <nav>
   <div class="logo">Ravin <span>Tech</span></div>
@@ -451,4 +558,4 @@ window.addEventListener("scroll", () => {
 </script>
 
 </body>
-</html>
+      </html>
