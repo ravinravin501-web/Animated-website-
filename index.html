@@ -30,10 +30,7 @@ INTRO VIDEO
 
 #intro{
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100vh;
+inset:0;
 background:#000;
 z-index:9999;
 display:flex;
@@ -48,19 +45,6 @@ width:100%;
 height:100%;
 object-fit:contain;
 background:#000;
-}
-
-/* DARK OVERLAY */
-
-#intro::after{
-content:"";
-position:absolute;
-inset:0;
-background:
-radial-gradient(circle,
-transparent 45%,
-rgba(0,0,0,0.75));
-pointer-events:none;
 }
 
 /* =========================
@@ -91,7 +75,7 @@ linear-gradient(
 animation:websiteBurst 1.5s ease forwards;
 }
 
-/* WEBSITE OPEN EFFECT */
+/* WEBSITE BURST EFFECT */
 
 @keyframes websiteBurst{
 
@@ -104,7 +88,7 @@ filter:blur(30px) brightness(3);
 50%{
 opacity:1;
 transform:scale(1.08);
-filter:blur(5px) brightness(1.5);
+filter:blur(5px) brightness(1.6);
 }
 
 100%{
@@ -121,22 +105,25 @@ NAVBAR
 
 .navbar{
 padding:20px 7%;
+
 display:flex;
 justify-content:space-between;
 align-items:center;
 
-background:rgba(0,0,0,0.4);
+background:rgba(0,0,0,0.45);
 
 backdrop-filter:blur(15px);
 
 border-bottom:
-1px solid rgba(56,189,248,0.3);
+1px solid rgba(56,189,248,0.25);
 }
 
 .logo{
 font-size:26px;
 font-weight:bold;
+
 color:#38bdf8;
+
 letter-spacing:2px;
 
 text-shadow:
@@ -145,7 +132,9 @@ text-shadow:
 
 .nav a{
 text-decoration:none;
+
 color:white;
+
 margin-left:12px;
 
 padding:10px 18px;
@@ -159,7 +148,9 @@ transition:0.3s;
 }
 
 .nav a:hover{
+
 background:#38bdf8;
+
 color:#000;
 
 box-shadow:
@@ -178,6 +169,7 @@ justify-content:center;
 align-items:center;
 
 padding:30px;
+
 text-align:center;
 
 position:relative;
@@ -187,10 +179,11 @@ position:relative;
 
 .hero::before{
 content:"";
+
 position:absolute;
 
-width:300px;
-height:300px;
+width:320px;
+height:320px;
 
 background:#38bdf8;
 
@@ -201,7 +194,9 @@ opacity:0.35;
 border-radius:50%;
 }
 
-/* MAIN BOX */
+/* =========================
+MOUNTED FLOATING PANEL
+========================= */
 
 .hero-box{
 
@@ -209,68 +204,119 @@ position:relative;
 
 max-width:850px;
 
-padding:50px 30px;
-
-border-radius:35px;
+padding:55px 35px;
 
 background:
-rgba(15,23,42,0.75);
+linear-gradient(
+145deg,
+rgba(15,23,42,0.88),
+rgba(30,41,59,0.65)
+);
+
+backdrop-filter:blur(18px);
 
 border:
-1px solid rgba(56,189,248,0.4);
+1px solid rgba(255,255,255,0.12);
+
+border-radius:45px;
 
 box-shadow:
-0 0 50px rgba(56,189,248,0.3),
-inset 0 0 30px rgba(255,255,255,0.05);
+0 25px 60px rgba(0,0,0,0.6),
+0 0 40px rgba(56,189,248,0.18),
+inset 0 0 20px rgba(255,255,255,0.04);
 
-/* ROTATE EFFECT */
+transform-style:preserve-3d;
 
-animation:cupRotate 1.8s ease forwards;
+/* MOUNTED ROTATION */
 
-transform-origin:center;
+animation:mountedPanel 2.2s ease forwards;
 }
 
-/* CUP STYLE ROTATE */
+/* TOP GLOW LINE */
 
-@keyframes cupRotate{
+.hero-box::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+left:10%;
+
+width:80%;
+height:2px;
+
+background:
+linear-gradient(
+90deg,
+transparent,
+#38bdf8,
+transparent
+);
+
+box-shadow:
+0 0 20px #38bdf8;
+}
+
+/* PANEL OPEN EFFECT */
+
+@keyframes mountedPanel{
 
 0%{
 opacity:0;
 
 transform:
-perspective(1000px)
-rotateX(80deg)
-rotateY(-35deg)
-scale(0.35);
+perspective(1400px)
+translateY(250px)
+rotateX(78deg)
+scale(0.4);
 
-filter:blur(20px);
+filter:
+blur(25px)
+brightness(2.5);
 }
 
-55%{
+45%{
 opacity:1;
 
 transform:
-perspective(1000px)
-rotateX(-10deg)
-rotateY(8deg)
-scale(1.08);
+perspective(1400px)
+translateY(-20px)
+rotateX(-12deg)
+scale(1.05);
 
-filter:blur(4px);
+filter:
+blur(4px)
+brightness(1.4);
+}
+
+70%{
+transform:
+perspective(1400px)
+translateY(10px)
+rotateX(6deg)
+scale(0.98);
 }
 
 100%{
 opacity:1;
 
 transform:
-perspective(1000px)
+perspective(1400px)
+translateY(0)
 rotateX(0deg)
-rotateY(0deg)
 scale(1);
 
-filter:blur(0);
+filter:
+blur(0)
+brightness(1);
 }
 
 }
+
+/* =========================
+TEXT
+========================= */
 
 .hero h1{
 font-size:58px;
@@ -291,9 +337,12 @@ line-height:1.8;
 color:#dbeafe;
 }
 
-/* BUTTON */
+/* =========================
+BUTTON
+========================= */
 
 .btn{
+
 margin-top:30px;
 
 padding:15px 35px;
@@ -325,50 +374,6 @@ transition:0.3s;
 
 .btn:hover{
 transform:scale(1.08);
-}
-
-/* WHATSAPP BUTTON */
-
-.whatsapp-btn{
-display:inline-block;
-
-margin-top:22px;
-
-padding:15px 34px;
-
-border-radius:40px;
-
-background:
-linear-gradient(
-135deg,
-#25D366,
-#128C7E
-);
-
-color:white;
-
-text-decoration:none;
-
-font-size:18px;
-
-font-weight:bold;
-
-letter-spacing:1px;
-
-box-shadow:
-0 0 25px rgba(37,211,102,0.7),
-0 0 50px rgba(37,211,102,0.3);
-
-transition:0.4s ease;
-}
-
-.whatsapp-btn:hover{
-
-transform:scale(1.08);
-
-box-shadow:
-0 0 35px rgba(37,211,102,1),
-0 0 70px rgba(37,211,102,0.5);
 }
 
 /* =========================
@@ -423,11 +428,67 @@ FOOTER
 ========================= */
 
 .footer{
-padding:25px;
+
+padding:30px 20px 45px;
+
 text-align:center;
+
 color:#94a3b8;
+
 border-top:
 1px solid rgba(255,255,255,0.1);
+
+background:
+rgba(0,0,0,0.35);
+}
+
+.footer p{
+margin-bottom:20px;
+}
+
+/* =========================
+WHATSAPP BUTTON
+========================= */
+
+.whatsapp-btn{
+
+display:inline-block;
+
+padding:15px 34px;
+
+border-radius:40px;
+
+background:
+linear-gradient(
+135deg,
+#25D366,
+#128C7E
+);
+
+color:white;
+
+text-decoration:none;
+
+font-size:18px;
+
+font-weight:bold;
+
+letter-spacing:1px;
+
+box-shadow:
+0 0 25px rgba(37,211,102,0.7),
+0 0 50px rgba(37,211,102,0.3);
+
+transition:0.4s ease;
+}
+
+.whatsapp-btn:hover{
+
+transform:scale(1.08);
+
+box-shadow:
+0 0 35px rgba(37,211,102,1),
+0 0 70px rgba(37,211,102,0.5);
 }
 
 /* =========================
@@ -468,6 +529,11 @@ font-size:16px;
 
 .hero-box{
 padding:40px 22px;
+}
+
+.whatsapp-btn{
+font-size:16px;
+padding:14px 26px;
 }
 
 }
@@ -538,16 +604,6 @@ and futuristic digital experiences.
 Start Project
 </button>
 
-<br>
-
-<a href="https://wa.me/919042458779"
-class="whatsapp-btn">
-
-<i class="fa-brands fa-whatsapp"></i>
-Contact on WhatsApp
-
-</a>
-
 </div>
 
 </section>
@@ -593,7 +649,19 @@ and business poster designs.
 <!-- FOOTER -->
 
 <div class="footer">
+
+<p>
 © 2026 Ravin Tech Solution • All Rights Reserved
+</p>
+
+<a href="https://wa.me/919042458779"
+class="whatsapp-btn">
+
+<i class="fa-brands fa-whatsapp"></i>
+Contact on WhatsApp
+
+</a>
+
 </div>
 
 </div>
@@ -614,9 +682,8 @@ const website =
 document.getElementById("website");
 
 /*
-Video plays normally.
-At laptop zoom moment,
-website bursts open.
+Laptop zoom moment →
+Website opens like entering laptop
 */
 
 video.onended = function(){
@@ -638,4 +705,4 @@ document.body.style.overflow="auto";
 </script>
 
 </body>
-  </html>
+</html>
