@@ -5,317 +5,576 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ravin Tech Solution</title>
 
-<style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+<style>
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
-background:#000;
-overflow:hidden;
-color:white;
+  background:#000;
+  color:white;
+  overflow-x:hidden;
 }
 
-/* INTRO VIDEO */
-
-#intro{
-position:fixed;
-inset:0;
-z-index:9999;
-background:#000;
-animation:hideIntro 8s forwards;
+/* BACKGROUND */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at top,#062d8f,#02040c 45%,#000 100%);
+  z-index:-2;
 }
 
-#intro video{
-width:100%;
-height:100%;
-object-fit:cover;
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(0,174,255,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,174,255,.08) 1px, transparent 1px);
+  background-size:45px 45px;
+  z-index:-1;
 }
 
-@keyframes hideIntro{
-0%,85%{
-opacity:1;
-visibility:visible;
-}
-100%{
-opacity:0;
-visibility:hidden;
-}
-}
-
-/* MAIN */
-
-.main{
-width:100%;
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background:
-radial-gradient(circle at top,#0d1d55,#000 60%);
-overflow:hidden;
-position:relative;
-}
-
-/* LAPTOP */
-
-.laptop{
-width:900px;
-max-width:95%;
-height:520px;
-background:#05070f;
-border-radius:25px;
-padding:18px;
-border:5px solid #111;
-box-shadow:
-0 0 60px #006eff,
-0 0 120px #003cff;
-position:relative;
-transform:perspective(1500px) rotateX(8deg);
-}
-
-/* SCREEN */
-
-.screen{
-width:100%;
-height:100%;
-border-radius:18px;
-overflow:hidden;
-position:relative;
-background:
-linear-gradient(135deg,#020817,#071c45,#020817);
-}
-
-/* TOP BAR */
-
-.topbar{
-height:60px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:0 25px;
-border-bottom:1px solid rgba(255,255,255,.1);
+/* HEADER */
+header{
+  width:100%;
+  padding:18px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(0,0,0,.65);
+  backdrop-filter:blur(14px);
+  position:fixed;
+  top:0;
+  z-index:1000;
+  border-bottom:1px solid rgba(0,174,255,.4);
 }
 
 .logo{
-font-size:24px;
-font-weight:bold;
-letter-spacing:2px;
-text-shadow:0 0 15px #00aeff;
+  font-size:24px;
+  font-weight:900;
+  color:#7fdcff;
+  text-shadow:0 0 18px #009dff;
 }
 
-.nav{
-display:flex;
-gap:12px;
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:10px;
+  padding:10px 16px;
+  border:1px solid #008cff;
+  border-radius:25px;
+  font-size:14px;
 }
 
-.nav button{
-padding:10px 18px;
-border:none;
-border-radius:25px;
-background:#0c1533;
-color:white;
-border:1px solid #1b66ff;
-cursor:pointer;
+nav a:hover{
+  background:#008cff;
+  box-shadow:0 0 20px #008cff;
 }
 
-/* CONTENT */
-
-.content{
-height:calc(100% - 60px);
-display:flex;
-justify-content:space-around;
-align-items:center;
-padding:40px;
+/* HERO */
+.hero{
+  min-height:100vh;
+  padding:120px 7% 60px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
-/* LEFT */
-
-.left{
-max-width:420px;
+/* LAPTOP */
+.laptop{
+  width:1050px;
+  max-width:96%;
+  height:610px;
+  background:#050505;
+  border:10px solid #181818;
+  border-radius:30px;
+  padding:15px;
+  position:relative;
+  box-shadow:
+    0 0 50px #006eff,
+    0 0 130px #003cff;
+  transform:perspective(1500px) rotateX(7deg);
 }
 
-.left h1{
-font-size:65px;
-line-height:1;
-text-transform:uppercase;
-margin-bottom:25px;
-text-shadow:0 0 30px #5fbfff;
+.screen{
+  width:100%;
+  height:100%;
+  border-radius:18px;
+  overflow:hidden;
+  position:relative;
+  background:#000;
 }
 
-.left h1 span{
-color:#7ec8ff;
+.screen video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
-.left p{
-font-size:17px;
-line-height:1.7;
-color:#d7e6ff;
-margin-bottom:30px;
+.overlay{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.82),rgba(0,0,0,.35),rgba(0,0,0,.8));
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:55px;
+  gap:30px;
+}
+
+.hero-text{
+  max-width:520px;
+}
+
+.hero-text h1{
+  font-size:58px;
+  line-height:1;
+  text-transform:uppercase;
+  text-shadow:0 0 25px #00aaff;
+}
+
+.hero-text span{
+  color:#73d8ff;
+}
+
+.hero-text p{
+  margin:22px 0;
+  font-size:17px;
+  line-height:1.7;
+  color:#dcefff;
+}
+
+.buttons{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
 }
 
 .btn{
-display:inline-block;
-padding:16px 35px;
-border-radius:40px;
-background:#0077ff;
-color:white;
-text-decoration:none;
-font-weight:bold;
-box-shadow:0 0 30px #0077ff;
+  padding:15px 28px;
+  border-radius:40px;
+  text-decoration:none;
+  font-weight:bold;
 }
 
-/* RIGHT CIRCLE */
+.primary{
+  background:#008cff;
+  color:white;
+  box-shadow:0 0 25px #008cff;
+}
 
-.circle{
-width:260px;
-height:260px;
-border-radius:50%;
-border:16px solid rgba(255,255,255,.2);
-border-top:16px solid #fff;
-box-shadow:
-0 0 40px #78c6ff,
-inset 0 0 25px #78c6ff;
-animation:spin 5s linear infinite;
+.secondary{
+  border:1px solid #7fdcff;
+  color:white;
+}
+
+/* AI RING */
+.ai-panel{
+  text-align:center;
+}
+
+.ring{
+  width:240px;
+  height:240px;
+  border-radius:50%;
+  border:18px solid rgba(255,255,255,.18);
+  border-top:18px solid #fff;
+  box-shadow:
+    0 0 45px #7fdcff,
+    inset 0 0 25px #7fdcff;
+  animation:spin 4s linear infinite;
+  margin:auto;
+}
+
+.ai-panel h2{
+  margin-top:22px;
+  text-shadow:0 0 18px #00aaff;
 }
 
 @keyframes spin{
-100%{
-transform:rotate(360deg);
-}
+  to{transform:rotate(360deg);}
 }
 
-/* FLOATING LIGHT */
-
-.light{
-position:absolute;
-width:400px;
-height:400px;
-background:#0051ff55;
-filter:blur(100px);
-border-radius:50%;
-top:-100px;
-right:-100px;
-}
-
-/* LAPTOP BASE */
-
+/* BASE */
 .base{
-position:absolute;
-bottom:-35px;
-left:50%;
-transform:translateX(-50%);
-width:105%;
-height:40px;
-background:#0f0f0f;
-border-radius:0 0 30px 30px;
-box-shadow:0 15px 30px rgba(0,0,0,.8);
+  position:absolute;
+  bottom:-42px;
+  left:50%;
+  transform:translateX(-50%);
+  width:108%;
+  height:42px;
+  background:linear-gradient(#222,#070707);
+  border-radius:0 0 35px 35px;
+  box-shadow:0 20px 35px #000;
+}
+
+.base::after{
+  content:"";
+  position:absolute;
+  top:9px;
+  left:50%;
+  transform:translateX(-50%);
+  width:160px;
+  height:8px;
+  background:#333;
+  border-radius:20px;
+}
+
+/* SECTIONS */
+section{
+  padding:80px 7%;
+}
+
+.section-title{
+  text-align:center;
+  font-size:42px;
+  margin-bottom:40px;
+  color:#7fdcff;
+  text-shadow:0 0 25px #008cff;
+}
+
+/* ABOUT */
+.about-box{
+  max-width:1000px;
+  margin:auto;
+  background:rgba(255,255,255,.06);
+  border:1px solid #008cff;
+  border-radius:28px;
+  padding:35px;
+  line-height:1.8;
+  color:#dcefff;
+  box-shadow:0 0 30px rgba(0,140,255,.35);
+}
+
+/* SERVICES */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:rgba(255,255,255,.06);
+  border:1px solid #008cff;
+  border-radius:25px;
+  padding:35px 22px;
+  text-align:center;
+  box-shadow:0 0 25px rgba(0,140,255,.35);
+  transition:.4s;
+}
+
+.card:hover{
+  transform:translateY(-12px) scale(1.03);
+  box-shadow:0 0 45px #008cff;
+}
+
+.card i{
+  font-size:42px;
+  color:#7fdcff;
+  margin-bottom:18px;
+}
+
+.card h3{
+  margin-bottom:12px;
+  font-size:22px;
+}
+
+.card p{
+  color:#dcefff;
+  line-height:1.6;
+}
+
+/* FEATURES */
+.features{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:20px;
+}
+
+.feature{
+  padding:25px;
+  background:#020817;
+  border:1px solid #7fdcff;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 0 20px rgba(0,140,255,.4);
+  animation:float 3s infinite ease-in-out;
+}
+
+.feature:nth-child(2){animation-delay:.3s;}
+.feature:nth-child(3){animation-delay:.6s;}
+.feature:nth-child(4){animation-delay:.9s;}
+.feature:nth-child(5){animation-delay:1.2s;}
+.feature:nth-child(6){animation-delay:1.5s;}
+
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-12px);}
+}
+
+/* CONTACT */
+.contact-box{
+  max-width:700px;
+  margin:auto;
+  text-align:center;
+  background:rgba(255,255,255,.06);
+  border:1px solid #25D366;
+  border-radius:28px;
+  padding:40px 25px;
+  box-shadow:0 0 35px rgba(37,211,102,.35);
+}
+
+.contact-box p{
+  color:#dcefff;
+  margin:12px 0;
+}
+
+.whatsapp{
+  display:inline-block;
+  margin-top:25px;
+  background:#25D366;
+  color:white;
+  padding:16px 32px;
+  border-radius:40px;
+  text-decoration:none;
+  font-weight:bold;
+  box-shadow:0 0 25px #25D366;
+}
+
+/* FOOTER */
+footer{
+  padding:30px;
+  text-align:center;
+  background:#000;
+  border-top:1px solid #008cff;
+  color:#aaa;
 }
 
 /* MOBILE */
-
 @media(max-width:768px){
+  header{
+    position:relative;
+    flex-direction:column;
+    gap:15px;
+  }
 
-.laptop{
-height:90vh;
-transform:none;
+  nav{
+    text-align:center;
+  }
+
+  nav a{
+    display:inline-block;
+    margin:5px;
+  }
+
+  .hero{
+    padding:35px 4% 80px;
+  }
+
+  .laptop{
+    height:620px;
+    transform:none;
+  }
+
+  .overlay{
+    flex-direction:column;
+    text-align:center;
+    padding:28px;
+    justify-content:center;
+  }
+
+  .hero-text h1{
+    font-size:38px;
+  }
+
+  .ring{
+    width:165px;
+    height:165px;
+  }
+
+  .base{
+    display:none;
+  }
+
+  .section-title{
+    font-size:32px;
+  }
 }
-
-.content{
-flex-direction:column;
-text-align:center;
-gap:40px;
-padding:25px;
-}
-
-.left h1{
-font-size:42px;
-}
-
-.circle{
-width:180px;
-height:180px;
-}
-
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- INTRO VIDEO -->
+<header>
+  <div class="logo">RAVIN TECH SOLUTION</div>
 
-<section id="intro">
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#features">AI Power</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-<video autoplay muted playsinline>
-<source src="intro.mp4" type="video/mp4">
-</video>
+<section class="hero" id="home">
+  <div class="laptop">
 
+    <div class="screen">
+
+      <!-- VIDEO INSIDE LAPTOP SCREEN -->
+      <video autoplay muted loop playsinline>
+        <source src="intro.mp4" type="video/mp4">
+      </video>
+
+      <div class="overlay">
+
+        <div class="hero-text">
+          <h1>
+            Creating<br>
+            <span>Digital</span><br>
+            Experience
+          </h1>
+
+          <p>
+            Ravin Tech Solution creates powerful AI-style websites,
+            cinematic intros, poster designs, branding, cyber security concepts,
+            ethical hacking learning pages and modern digital solutions.
+          </p>
+
+          <div class="buttons">
+            <a class="btn primary" href="https://wa.me/919042458779?text=Hi%20Ravin%20Tech%20Solution%2C%20I%20need%20a%20website">
+              Start Project
+            </a>
+
+            <a class="btn secondary" href="#services">
+              View Services
+            </a>
+          </div>
+        </div>
+
+        <div class="ai-panel">
+          <div class="ring"></div>
+          <h2>AI POWER MODE</h2>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="base"></div>
+
+  </div>
 </section>
 
-<!-- WEBSITE -->
+<section id="about">
+  <h2 class="section-title">About Us</h2>
 
-<div class="main">
+  <div class="about-box">
+    <p>
+      <b>Ravin Tech Solution</b> is a modern digital service brand focused on
+      futuristic website design, AI creative works, mobile-friendly web pages,
+      posters, branding and technology-based solutions.
+    </p>
+    <br>
+    <p>
+      Our goal is to create powerful, stylish and professional digital experiences
+      for personal brands, businesses, political pages, social media promotions
+      and online projects.
+    </p>
+  </div>
+</section>
 
-<div class="light"></div>
+<section id="services">
+  <h2 class="section-title">Our Services</h2>
 
-<div class="laptop">
+  <div class="cards">
 
-<div class="screen">
+    <div class="card">
+      <i class="fa-solid fa-code"></i>
+      <h3>Website Development</h3>
+      <p>Premium responsive websites with modern animations and mobile-friendly layout.</p>
+    </div>
 
-<div class="topbar">
+    <div class="card">
+      <i class="fa-solid fa-robot"></i>
+      <h3>AI Design</h3>
+      <p>AI posters, cinematic intros, social media creatives and futuristic designs.</p>
+    </div>
 
-<div class="logo">
-RAVIN TECH
-</div>
+    <div class="card">
+      <i class="fa-solid fa-shield-halved"></i>
+      <h3>Cyber Security</h3>
+      <p>Website safety concepts, protection awareness and secure digital setup ideas.</p>
+    </div>
 
-<div class="nav">
-<button>Home</button>
-<button>Services</button>
-<button>Contact</button>
-</div>
+    <div class="card">
+      <i class="fa-solid fa-user-secret"></i>
+      <h3>Ethical Hacking</h3>
+      <p>Learning-based ethical hacking content, cyber knowledge and awareness pages.</p>
+    </div>
 
-</div>
+    <div class="card">
+      <i class="fa-solid fa-palette"></i>
+      <h3>Poster Design</h3>
+      <p>Political posters, launch posters, business posters and Instagram post designs.</p>
+    </div>
 
-<div class="content">
+    <div class="card">
+      <i class="fa-solid fa-mobile-screen-button"></i>
+      <h3>Mobile Web Design</h3>
+      <p>Websites that look clean and powerful on mobile, tablet and laptop screens.</p>
+    </div>
 
-<div class="left">
+  </div>
+</section>
 
-<h1>
-Creating<br>
-Digital<br>
-<span>Experience</span>
-</h1>
+<section id="features">
+  <h2 class="section-title">AI Technology Features</h2>
 
-<p>
-Premium futuristic websites, AI designs,
-cyber security concepts, ethical hacking,
-branding and modern digital solutions.
-</p>
+  <div class="features">
+    <div class="feature">Laptop Video View</div>
+    <div class="feature">Neon Interface</div>
+    <div class="feature">3D AI Ring</div>
+    <div class="feature">Floating Cards</div>
+    <div class="feature">WhatsApp Contact</div>
+    <div class="feature">Mobile Friendly</div>
+  </div>
+</section>
 
-<a class="btn"
-href="https://wa.me/919042458779">
-Start Project
-</a>
+<section id="contact">
+  <h2 class="section-title">Contact Us</h2>
 
-</div>
+  <div class="contact-box">
+    <h2>Ravin Tech Solution</h2>
+    <p><b>Phone / WhatsApp:</b> 9042458779</p>
+    <p><b>Service:</b> Website, AI Design, Cyber Security, Ethical Hacking, Posters, Branding</p>
+    <p>Click below to contact directly on WhatsApp.</p>
 
-<div class="circle"></div>
+    <a class="whatsapp" href="https://wa.me/919042458779?text=Hi%20Ravin%20Tech%20Solution%2C%20I%20need%20your%20service">
+      <i class="fa-brands fa-whatsapp"></i> Contact on WhatsApp
+    </a>
+  </div>
+</section>
 
-</div>
-
-</div>
-
-<div class="base"></div>
-
-</div>
-
-</div>
+<footer>
+  © 2026 Ravin Tech Solution. All Rights Reserved.  
+  <br>
+  Created by Ravin Tech Solution
+</footer>
 
 </body>
-</html>
+      </html>
