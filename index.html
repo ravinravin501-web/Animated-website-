@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Ravin Tech Solution</title>
 
 <style>
@@ -19,29 +20,25 @@ color:white;
 overflow:hidden;
 }
 
-/* INTRO */
+/* INTRO VIDEO - NO ZOOM */
 #intro{
 position:fixed;
-inset:0;
+top:0;
+left:0;
+width:100%;
+height:100vh;
 background:#000;
 z-index:9999;
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
 #intro video{
 width:100%;
 height:100%;
-object-fit:cover;
-}
-
-.skip{
-position:absolute;
-top:20px;
-right:20px;
-padding:10px 20px;
-border:1px solid #38bdf8;
-background:rgba(0,0,0,0.6);
-color:white;
-border-radius:25px;
+object-fit:contain;
+background:#000;
 }
 
 /* WEBSITE */
@@ -49,35 +46,42 @@ border-radius:25px;
 display:none;
 min-height:100vh;
 background:
-radial-gradient(circle at 20% 30%, #0ea5e955, transparent 35%),
-radial-gradient(circle at 80% 70%, #a855f755, transparent 35%),
+radial-gradient(circle at top left, #00d9ff33, transparent 35%),
+radial-gradient(circle at bottom right, #7c3aed44, transparent 35%),
 linear-gradient(135deg,#020617,#0f172a,#020617);
 overflow:auto;
+opacity:0;
+transition:1s ease;
+}
+
+#website.show{
+opacity:1;
 }
 
 .navbar{
-padding:22px 8%;
+padding:20px 7%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-background:rgba(0,0,0,0.35);
-backdrop-filter:blur(12px);
+background:rgba(0,0,0,0.45);
+backdrop-filter:blur(15px);
+border-bottom:1px solid rgba(56,189,248,0.3);
 }
 
 .logo{
-font-size:26px;
+font-size:24px;
 font-weight:bold;
 color:#38bdf8;
-text-shadow:0 0 18px #38bdf8;
+text-shadow:0 0 20px #38bdf8;
 }
 
 .nav a{
-color:white;
 text-decoration:none;
-margin-left:18px;
-padding:9px 15px;
-border:1px solid #334155;
+color:white;
+margin-left:12px;
+padding:9px 16px;
 border-radius:20px;
+border:1px solid rgba(56,189,248,0.4);
 }
 
 .hero{
@@ -86,27 +90,27 @@ display:flex;
 justify-content:center;
 align-items:center;
 text-align:center;
-padding:30px;
+padding:25px;
 }
 
 .hero-box{
 max-width:850px;
 padding:45px 25px;
-border:1px solid #334155;
 border-radius:30px;
-background:rgba(2,6,23,0.55);
-box-shadow:0 0 40px #0ea5e966;
+background:rgba(15,23,42,0.65);
+border:1px solid rgba(56,189,248,0.35);
+box-shadow:0 0 45px rgba(56,189,248,0.25);
 }
 
 .hero h1{
-font-size:58px;
+font-size:55px;
 color:#38bdf8;
 text-shadow:0 0 25px #38bdf8;
 margin-bottom:20px;
 }
 
 .hero p{
-font-size:20px;
+font-size:19px;
 line-height:1.7;
 color:#dbeafe;
 }
@@ -118,51 +122,64 @@ border:none;
 border-radius:30px;
 font-size:18px;
 font-weight:bold;
-background:linear-gradient(90deg,#38bdf8,#a855f7);
+background:linear-gradient(90deg,#38bdf8,#8b5cf6);
 color:white;
-box-shadow:0 0 25px #38bdf8;
+box-shadow:0 0 25px rgba(56,189,248,0.7);
 }
 
 .services{
-padding:40px 8%;
+padding:40px 7%;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:25px;
+gap:22px;
 }
 
 .card{
-padding:30px;
-border-radius:25px;
+padding:28px;
+border-radius:24px;
 background:rgba(15,23,42,0.75);
-border:1px solid #334155;
-box-shadow:0 0 25px #000;
+border:1px solid rgba(56,189,248,0.25);
+box-shadow:0 0 25px rgba(0,0,0,0.5);
 }
 
 .card h3{
 color:#38bdf8;
-margin-bottom:12px;
+margin-bottom:10px;
 }
 
 /* MOBILE */
 @media(max-width:768px){
+
+#intro video{
+width:100%;
+height:auto;
+max-height:100vh;
+object-fit:contain;
+}
+
 .navbar{
 flex-direction:column;
-gap:15px;
+gap:14px;
+}
+
+.nav{
+text-align:center;
 }
 
 .nav a{
-margin:5px;
 display:inline-block;
+margin:5px;
 font-size:14px;
 }
 
 .hero h1{
-font-size:36px;
+font-size:34px;
 }
 
 .hero p{
 font-size:16px;
 }
+
 }
 </style>
 </head>
@@ -173,7 +190,6 @@ font-size:16px;
 <video id="introVideo" autoplay muted playsinline>
 <source src="intro.mp4" type="video/mp4">
 </video>
-<button class="skip" onclick="showWebsite()">Skip Intro</button>
 </div>
 
 <div id="website">
@@ -192,9 +208,8 @@ font-size:16px;
 <div class="hero-box">
 <h1>RAVIN TECH SOLUTION</h1>
 <p>
-We create premium websites, AI video intros, APK apps,
-game UI designs, posters, and cinematic digital experiences
-with a futuristic neon style.
+Premium websites, AI video intros, APK apps, poster designs,
+and cinematic digital solutions for your brand.
 </p>
 <button class="btn">Start Project</button>
 </div>
@@ -203,22 +218,22 @@ with a futuristic neon style.
 <section class="services">
 <div class="card">
 <h3>Website Design</h3>
-<p>Modern mobile-friendly websites with premium animation.</p>
+<p>Modern and mobile-friendly premium websites.</p>
 </div>
 
 <div class="card">
 <h3>AI Video Intro</h3>
-<p>Cinematic intro videos for brands, apps and websites.</p>
+<p>Cinematic intro videos for your brand and business.</p>
 </div>
 
 <div class="card">
 <h3>APK App</h3>
-<p>Convert your website into an Android app.</p>
+<p>Convert your website into Android app style.</p>
 </div>
 
 <div class="card">
 <h3>Poster Design</h3>
-<p>Political, business and social media poster designs.</p>
+<p>Professional posters for social media and business.</p>
 </div>
 </section>
 
@@ -226,16 +241,18 @@ with a futuristic neon style.
 
 <script>
 const video = document.getElementById("introVideo");
+const intro = document.getElementById("intro");
+const website = document.getElementById("website");
 
 video.onended = function(){
-showWebsite();
-};
+intro.style.display = "none";
+website.style.display = "block";
+document.body.style.overflow = "auto";
 
-function showWebsite(){
-document.getElementById("intro").style.display="none";
-document.getElementById("website").style.display="block";
-document.body.style.overflow="auto";
-}
+setTimeout(function(){
+website.classList.add("show");
+},100);
+};
 </script>
 
 </body>
