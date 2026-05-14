@@ -6,11 +6,12 @@
 <title>Ravin Tech Solution</title>
 
 <style>
+
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:Arial, sans-serif;
+  font-family:Arial,sans-serif;
 }
 
 body{
@@ -19,14 +20,26 @@ body{
   overflow-x:hidden;
 }
 
+/* BACKGROUND */
+
 .bg{
   position:fixed;
   inset:0;
   z-index:-5;
+
   background:
-  radial-gradient(circle at 20% 20%,rgba(120,0,255,.35),transparent 30%),
-  radial-gradient(circle at 80% 25%,rgba(0,90,255,.45),transparent 35%),
-  radial-gradient(circle at 50% 90%,rgba(255,0,130,.25),transparent 35%),
+  radial-gradient(circle at 20% 20%,
+  rgba(120,0,255,.35),
+  transparent 30%),
+
+  radial-gradient(circle at 80% 25%,
+  rgba(0,90,255,.45),
+  transparent 35%),
+
+  radial-gradient(circle at 50% 90%,
+  rgba(255,0,130,.25),
+  transparent 35%),
+
   #020208;
 }
 
@@ -34,12 +47,17 @@ body{
   position:fixed;
   inset:0;
   z-index:-4;
+
   background-image:
-  linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),
-  linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);
+  linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+
   background-size:70px 70px;
+
   animation:gridMove 18s linear infinite;
 }
+
+/* GLOW LIGHTS */
 
 .light{
   position:fixed;
@@ -72,22 +90,33 @@ body{
   animation:move3 10s infinite alternate;
 }
 
+/* NAVBAR */
+
 nav{
   position:fixed;
   top:18px;
   left:50%;
   transform:translateX(-50%);
+
   width:92%;
   max-width:1150px;
+
   padding:15px 22px;
+
   border-radius:40px;
+
   background:rgba(255,255,255,.08);
+
   border:1px solid rgba(255,255,255,.16);
+
   backdrop-filter:blur(18px);
+
   display:flex;
   justify-content:space-between;
   align-items:center;
+
   z-index:99;
+
   animation:navDrop 1s ease;
 }
 
@@ -108,12 +137,17 @@ nav a{
   font-size:14px;
 }
 
+/* HERO */
+
 .hero{
   min-height:100vh;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   padding:120px 20px 60px;
+
   text-align:center;
 }
 
@@ -126,6 +160,7 @@ nav a{
   letter-spacing:3px;
   color:#b6b6ff;
   margin-bottom:20px;
+
   animation:fadeDown 1s ease;
 }
 
@@ -133,110 +168,173 @@ nav a{
   font-size:72px;
   line-height:1;
   margin-bottom:22px;
+
   animation:titleReveal 1.4s ease;
 }
 
 .hero h1 span{
-  background:linear-gradient(90deg,#00ccff,#8a2cff,#ff2bd6);
+  background:linear-gradient(
+  90deg,
+  #00ccff,
+  #8a2cff,
+  #ff2bd6
+  );
+
   -webkit-background-clip:text;
   color:transparent;
+
   background-size:300%;
+
   animation:gradientText 4s linear infinite;
 }
 
 .hero p{
   max-width:700px;
   margin:auto;
+
   color:#d8d8f0;
+
   font-size:18px;
   line-height:1.7;
+
   margin-bottom:35px;
+
   animation:fadeUp 1.5s ease;
 }
 
+/* BUTTON */
+
 .btn{
   display:inline-block;
+
   padding:16px 34px;
-  background:linear-gradient(90deg,#00ccff,#8a2cff,#ff2bd6);
+
+  background:linear-gradient(
+  90deg,
+  #00ccff,
+  #8a2cff,
+  #ff2bd6
+  );
+
   color:white;
+
   text-decoration:none;
+
   border-radius:50px;
+
   font-weight:bold;
+
   box-shadow:0 0 35px rgba(0,204,255,.6);
-  animation:pulse 2s infinite, fadeUp 1.8s ease;
+
+  animation:
+  pulse 2s infinite,
+  fadeUp 1.8s ease;
 }
 
-.stage{
-  margin-top:60px;
-  height:360px;
+/* GAMING ROLLING BOXES */
+
+.gaming-arena{
+  margin:80px auto 0;
+  width:100%;
+  max-width:950px;
+  height:460px;
   position:relative;
-  perspective:1200px;
+  perspective:1400px;
 }
 
-.panel{
+.rolling-box{
   position:absolute;
-  width:310px;
-  height:210px;
-  border-radius:22px;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.18);
-  backdrop-filter:blur(20px);
-  box-shadow:0 0 60px rgba(0,0,0,.8);
-  overflow:hidden;
+
+  width:250px;
+  height:170px;
+
   padding:25px;
+
+  border-radius:28px;
+
+  background:
+  linear-gradient(
+  135deg,
+  rgba(255,255,255,.12),
+  rgba(255,255,255,.04)
+  );
+
+  border:1px solid rgba(255,255,255,.22);
+
+  backdrop-filter:blur(18px);
+
+  box-shadow:
+  0 0 30px rgba(0,204,255,.35),
+  inset 0 0 25px rgba(255,255,255,.08);
+
+  transform-style:preserve-3d;
+
+  overflow:hidden;
 }
 
-.panel::before{
+.rolling-box::before{
   content:"";
+
   position:absolute;
   inset:0;
-  background:linear-gradient(120deg,transparent,rgba(255,255,255,.18),transparent);
+
+  background:
+  linear-gradient(
+  120deg,
+  transparent,
+  rgba(255,255,255,.18),
+  transparent
+  );
+
   transform:translateX(-100%);
+
   animation:shine 4s infinite;
 }
 
-.panel h2{
+.rolling-box h3{
   position:relative;
-  font-size:26px;
-  line-height:1.1;
-  text-align:left;
+  color:#00ccff;
+  font-size:23px;
+  margin-bottom:12px;
+  text-shadow:0 0 18px #00ccff;
 }
 
-.panel p{
+.rolling-box p{
   position:relative;
-  font-size:13px;
-  text-align:left;
-  color:#ccc;
-  margin-top:18px;
+  color:#ddd;
+  line-height:1.5;
+  font-size:14px;
 }
 
-.panel1{
-  left:50%;
+/* BOX POSITIONS */
+
+.box1{
   top:20px;
-  transform:translateX(-50%) rotateY(0deg);
-  animation:mainFloat 4s infinite ease-in-out;
+  left:50%;
+  transform:translateX(-50%);
+  animation:mainRoll 7s infinite ease-in-out;
 }
 
-.panel2{
-  left:8%;
-  top:80px;
-  transform:rotateY(28deg) rotateZ(-3deg);
-  animation:leftFloat 5s infinite ease-in-out;
+.box2{
+  top:170px;
+  left:0;
+  animation:leftRoll 8s infinite ease-in-out;
 }
 
-.panel3{
-  right:8%;
-  top:80px;
-  transform:rotateY(-28deg) rotateZ(3deg);
-  animation:rightFloat 5s infinite ease-in-out;
+.box3{
+  top:170px;
+  right:0;
+  animation:rightRoll 8s infinite ease-in-out;
 }
 
-.panel4{
-  left:35%;
+.box4{
   bottom:0;
-  transform:rotateX(20deg) scale(.85);
-  animation:bottomFloat 6s infinite ease-in-out;
+  left:50%;
+  transform:translateX(-50%);
+  animation:bottomRoll 9s infinite ease-in-out;
 }
+
+/* SERVICES */
 
 section{
   padding:90px 22px;
@@ -255,23 +353,33 @@ section{
 .cards{
   max-width:1100px;
   margin:auto;
+
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(230px,1fr));
+
   gap:25px;
 }
 
 .card{
   padding:32px;
   min-height:220px;
+
   border-radius:30px;
+
   background:rgba(255,255,255,.08);
+
   border:1px solid rgba(255,255,255,.15);
+
   backdrop-filter:blur(18px);
+
   transition:.4s;
 }
 
 .card:hover{
   transform:translateY(-15px) scale(1.03);
+
   box-shadow:0 0 45px rgba(0,204,255,.35);
 }
 
@@ -286,26 +394,42 @@ section{
   line-height:1.6;
 }
 
+/* CONTACT */
+
 .contact-box{
   max-width:800px;
   margin:auto;
+
   text-align:center;
+
   padding:50px 25px;
+
   border-radius:35px;
+
   background:rgba(255,255,255,.08);
+
   border:1px solid rgba(255,255,255,.18);
+
   backdrop-filter:blur(20px);
+
   box-shadow:0 0 70px rgba(138,44,255,.25);
 }
 
 .whatsapp{
   display:inline-block;
+
   margin-top:25px;
+
   background:#25D366;
+
   color:white;
+
   text-decoration:none;
+
   padding:15px 32px;
+
   border-radius:40px;
+
   font-weight:bold;
 }
 
@@ -314,6 +438,8 @@ footer{
   padding:25px;
   color:#aaa;
 }
+
+/* REVEAL */
 
 .reveal{
   opacity:0;
@@ -326,24 +452,52 @@ footer{
   transform:translateY(0);
 }
 
+/* ANIMATIONS */
+
 @keyframes navDrop{
-  from{opacity:0;transform:translateX(-50%) translateY(-50px);}
-  to{opacity:1;transform:translateX(-50%) translateY(0);}
+  from{
+    opacity:0;
+    transform:translateX(-50%) translateY(-50px);
+  }
+  to{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+  }
 }
 
 @keyframes fadeDown{
-  from{opacity:0;transform:translateY(-30px);}
-  to{opacity:1;transform:translateY(0);}
+  from{
+    opacity:0;
+    transform:translateY(-30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 @keyframes fadeUp{
-  from{opacity:0;transform:translateY(40px);}
-  to{opacity:1;transform:translateY(0);}
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 @keyframes titleReveal{
-  from{opacity:0;letter-spacing:10px;filter:blur(12px);}
-  to{opacity:1;letter-spacing:0;filter:blur(0);}
+  from{
+    opacity:0;
+    letter-spacing:10px;
+    filter:blur(12px);
+  }
+  to{
+    opacity:1;
+    letter-spacing:0;
+    filter:blur(0);
+  }
 }
 
 @keyframes gradientText{
@@ -352,8 +506,12 @@ footer{
 }
 
 @keyframes pulse{
-  0%,100%{box-shadow:0 0 25px rgba(0,204,255,.5);}
-  50%{box-shadow:0 0 65px rgba(255,43,214,.8);}
+  0%,100%{
+    box-shadow:0 0 25px rgba(0,204,255,.5);
+  }
+  50%{
+    box-shadow:0 0 65px rgba(255,43,214,.8);
+  }
 }
 
 @keyframes gridMove{
@@ -381,27 +539,75 @@ footer{
   45%,100%{transform:translateX(100%);}
 }
 
-@keyframes mainFloat{
-  0%,100%{transform:translateX(-50%) translateY(0) rotateY(0deg);}
-  50%{transform:translateX(-50%) translateY(-18px) rotateY(6deg);}
+/* ROLLING ANIMATIONS */
+
+@keyframes mainRoll{
+  0%,100%{
+    transform:
+    translateX(-50%)
+    rotateY(0deg)
+    translateY(0);
+  }
+
+  50%{
+    transform:
+    translateX(-50%)
+    rotateY(360deg)
+    translateY(-20px);
+  }
 }
 
-@keyframes leftFloat{
-  0%,100%{transform:rotateY(28deg) rotateZ(-3deg) translateY(0);}
-  50%{transform:rotateY(20deg) rotateZ(-1deg) translateY(-20px);}
+@keyframes leftRoll{
+  0%,100%{
+    transform:
+    rotateY(20deg)
+    rotateZ(-2deg)
+    translateY(0);
+  }
+
+  50%{
+    transform:
+    rotateY(380deg)
+    rotateZ(2deg)
+    translateY(-20px);
+  }
 }
 
-@keyframes rightFloat{
-  0%,100%{transform:rotateY(-28deg) rotateZ(3deg) translateY(0);}
-  50%{transform:rotateY(-20deg) rotateZ(1deg) translateY(-20px);}
+@keyframes rightRoll{
+  0%,100%{
+    transform:
+    rotateY(-20deg)
+    rotateZ(2deg)
+    translateY(0);
+  }
+
+  50%{
+    transform:
+    rotateY(-380deg)
+    rotateZ(-2deg)
+    translateY(-20px);
+  }
 }
 
-@keyframes bottomFloat{
-  0%,100%{transform:rotateX(20deg) scale(.85) translateY(0);}
-  50%{transform:rotateX(10deg) scale(.9) translateY(-15px);}
+@keyframes bottomRoll{
+  0%,100%{
+    transform:
+    translateX(-50%)
+    rotateX(0deg);
+  }
+
+  50%{
+    transform:
+    translateX(-50%)
+    rotateX(360deg)
+    translateY(-15px);
+  }
 }
+
+/* MOBILE */
 
 @media(max-width:700px){
+
   .hero h1{
     font-size:42px;
   }
@@ -419,36 +625,39 @@ footer{
     margin-left:8px;
   }
 
-  .stage{
-    height:420px;
+  .gaming-arena{
+    height:720px;
   }
 
-  .panel{
-    width:260px;
-    height:180px;
+  .rolling-box{
+    width:220px;
+    height:150px;
   }
 
-  .panel1{
+  .box1{
     top:20px;
+    left:50%;
   }
 
-  .panel2{
-    left:0;
-    top:170px;
-    transform:scale(.8) rotateY(20deg);
+  .box2{
+    top:190px;
+    left:50%;
+    transform:translateX(-50%);
   }
 
-  .panel3{
-    right:0;
-    top:250px;
-    transform:scale(.8) rotateY(-20deg);
+  .box3{
+    top:360px;
+    left:50%;
+    right:auto;
+    transform:translateX(-50%);
   }
 
-  .panel4{
-    left:18%;
+  .box4{
     bottom:0;
+    left:50%;
   }
 }
+
 </style>
 </head>
 
@@ -456,123 +665,182 @@ footer{
 
 <div class="bg"></div>
 <div class="grid"></div>
+
 <div class="light light1"></div>
 <div class="light light2"></div>
 <div class="light light3"></div>
 
 <nav>
-  <div class="logo">Ravin <span>Tech</span></div>
+  <div class="logo">
+    Ravin <span>Tech</span>
+  </div>
+
   <div>
     <a href="#services">Services</a>
-    <a href="#work">Work</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
 
 <div class="hero">
-  <div class="hero-content">
-    <div class="small-title">CAN YOU BELIEVE WE BUILD THIS?</div>
 
-    <h1>Creative <span>Digital</span><br>Experiences</h1>
+  <div class="hero-content">
+
+    <div class="small-title">
+      PREMIUM DIGITAL EXPERIENCE
+    </div>
+
+    <h1>
+      Gaming Style <span>Website</span><br>
+      Experience
+    </h1>
 
     <p>
-      Ravin Tech Solution creates premium animated websites with modern UI,
-      powerful branding, mobile responsive design and cinematic effects.
+      Ravin Tech Solution creates premium animated websites
+      with gaming UI, cinematic glow, rolling information cards
+      and futuristic effects.
     </p>
 
-    <a href="#contact" class="btn">Start Your Website</a>
+    <a href="#contact" class="btn">
+      Start Your Website
+    </a>
 
-    <div class="stage">
-      <div class="panel panel1">
-        <h2>Creative<br>Digital<br>Experiences</h2>
-        <p>Premium website design for brands, business and creators.</p>
+    <!-- GAMING BOXES -->
+
+    <div class="gaming-arena">
+
+      <div class="rolling-box box1">
+        <h3>Website Design</h3>
+        <p>
+          Premium websites for business and brands.
+        </p>
       </div>
 
-      <div class="panel panel2">
-        <h2>Elevated<br>To<br>Imagination</h2>
-        <p>Clean animation, glowing sections and professional layout.</p>
+      <div class="rolling-box box2">
+        <h3>Mobile Ready</h3>
+        <p>
+          Perfect layout for all mobile screens.
+        </p>
       </div>
 
-      <div class="panel panel3">
-        <h2>Our<br>Mission</h2>
-        <p>Build websites that attract, impress and convert visitors.</p>
+      <div class="rolling-box box3">
+        <h3>Fast Loading</h3>
+        <p>
+          Clean code with smooth performance.
+        </p>
       </div>
 
-      <div class="panel panel4">
-        <h2>Ravin Tech<br>Solution</h2>
-        <p>Your digital identity starts here.</p>
+      <div class="rolling-box box4">
+        <h3>Gaming UI</h3>
+        <p>
+          Glow effects, motion and premium style.
+        </p>
       </div>
+
     </div>
+
   </div>
+
 </div>
 
 <section id="services" class="reveal">
-  <h2 class="title">Our <span>Services</span></h2>
+
+  <h2 class="title">
+    Premium <span>Services</span>
+  </h2>
 
   <div class="cards">
+
     <div class="card">
       <h3>Website Design</h3>
-      <p>Modern websites for business, personal brand, political pages and service pages.</p>
+      <p>
+        Modern websites for business,
+        personal brand and services.
+      </p>
     </div>
 
     <div class="card">
-      <h3>Mobile Version</h3>
-      <p>Perfect mobile-friendly layout for Android, iPhone, tablet and desktop.</p>
+      <h3>Gaming UI</h3>
+      <p>
+        Cinematic glow, futuristic effects
+        and rolling animations.
+      </p>
     </div>
 
     <div class="card">
       <h3>Landing Page</h3>
-      <p>Premium single page website for promotion, launch and online presence.</p>
+      <p>
+        Premium single page websites
+        for promotion and branding.
+      </p>
     </div>
 
     <div class="card">
-      <h3>Animation UI</h3>
-      <p>Floating screens, glow effects, glass cards and cinematic web animations.</p>
+      <h3>Mobile Ready</h3>
+      <p>
+        Optimized perfectly for Android,
+        iPhone and desktop.
+      </p>
     </div>
-  </div>
-</section>
 
-<section id="work" class="reveal">
-  <h2 class="title">Premium <span>Design</span></h2>
-
-  <div class="contact-box">
-    <p>
-      This website style is based on a cinematic dark website reel:
-      black background, blue-purple glow, 3D floating cards, animated text,
-      smooth arrival motion and premium glass design.
-    </p>
   </div>
+
 </section>
 
 <section id="contact" class="reveal">
-  <div class="contact-box">
-    <h2 class="title">Create Your Website Today</h2>
-    <p>Contact Ravin Tech Solution and start your online journey.</p>
 
-    <a class="whatsapp" href="https://wa.me/919042458779">
+  <div class="contact-box">
+
+    <h2 class="title">
+      Create Your <span>Website</span>
+    </h2>
+
+    <p>
+      Contact Ravin Tech Solution
+      and build your premium website today.
+    </p>
+
+    <a class="whatsapp"
+    href="https://wa.me/919042458779">
       Chat on WhatsApp
     </a>
+
   </div>
+
 </section>
 
 <footer>
-  © 2026 Ravin Tech Solution. All Rights Reserved.
+  © 2026 Ravin Tech Solution
 </footer>
 
 <script>
-const reveals = document.querySelectorAll(".reveal");
+
+const reveals =
+document.querySelectorAll(".reveal");
 
 function revealOnScroll(){
+
   reveals.forEach(section=>{
-    const top = section.getBoundingClientRect().top;
+
+    const top =
+    section.getBoundingClientRect().top;
+
     if(top < window.innerHeight - 100){
+
       section.classList.add("active");
+
     }
+
   });
+
 }
 
-window.addEventListener("scroll", revealOnScroll);
+window.addEventListener(
+"scroll",
+revealOnScroll
+);
+
 revealOnScroll();
+
 </script>
 
 </body>
