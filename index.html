@@ -6,400 +6,237 @@
 <title>Ravin Tech Solution</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#020204;color:white;overflow-x:hidden}
-
-/* HERO */
-.hero{
-  min-height:100vh;
-  position:relative;
-  padding:35px;
-  display:flex;
-  align-items:center;
-  background:
-    radial-gradient(circle at 75% 20%,rgba(0,68,255,.55),transparent 28%),
-    radial-gradient(circle at 20% 80%,rgba(255,0,160,.28),transparent 34%),
-    linear-gradient(120deg,#020204,#070014,#000);
-  overflow:hidden;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
 }
 
-/* MOVING GRID */
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background-image:
-  linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),
-  linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);
-  background-size:65px 65px;
-  animation:gridMove 18s linear infinite;
+body{
+background:#020617;
+color:white;
+overflow:hidden;
 }
 
-/* TOP NAV */
-.nav{
-  position:absolute;
-  top:25px;
-  right:35px;
-  display:flex;
-  gap:10px;
-  z-index:5;
+/* INTRO */
+#intro{
+position:fixed;
+inset:0;
+background:#000;
+z-index:9999;
+}
+
+#intro video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.skip{
+position:absolute;
+top:20px;
+right:20px;
+padding:10px 20px;
+border:1px solid #38bdf8;
+background:rgba(0,0,0,0.6);
+color:white;
+border-radius:25px;
+}
+
+/* WEBSITE */
+#website{
+display:none;
+min-height:100vh;
+background:
+radial-gradient(circle at 20% 30%, #0ea5e955, transparent 35%),
+radial-gradient(circle at 80% 70%, #a855f755, transparent 35%),
+linear-gradient(135deg,#020617,#0f172a,#020617);
+overflow:auto;
+}
+
+.navbar{
+padding:22px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,0.35);
+backdrop-filter:blur(12px);
+}
+
+.logo{
+font-size:26px;
+font-weight:bold;
+color:#38bdf8;
+text-shadow:0 0 18px #38bdf8;
 }
 
 .nav a{
-  color:white;
-  text-decoration:none;
-  font-size:12px;
-  padding:8px 16px;
-  border-radius:25px;
-  border:1px solid rgba(255,255,255,.25);
-  background:rgba(255,255,255,.08);
-  backdrop-filter:blur(12px);
+color:white;
+text-decoration:none;
+margin-left:18px;
+padding:9px 15px;
+border:1px solid #334155;
+border-radius:20px;
 }
 
-/* CONTENT */
-.content{
-  width:100%;
-  max-width:1150px;
-  margin:auto;
-  position:relative;
-  z-index:2;
+.hero{
+min-height:90vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:30px;
 }
 
-.brand{
-  font-size:14px;
-  letter-spacing:4px;
-  color:#b8b8ff;
-  margin-bottom:25px;
-  animation:fadeDown 1s ease;
+.hero-box{
+max-width:850px;
+padding:45px 25px;
+border:1px solid #334155;
+border-radius:30px;
+background:rgba(2,6,23,0.55);
+box-shadow:0 0 40px #0ea5e966;
 }
 
-.main-title{
-  font-size:82px;
-  line-height:.9;
-  letter-spacing:-4px;
-  font-weight:900;
-  text-transform:uppercase;
-  max-width:680px;
-  animation:titleIn 1.4s ease;
+.hero h1{
+font-size:58px;
+color:#38bdf8;
+text-shadow:0 0 25px #38bdf8;
+margin-bottom:20px;
 }
 
-.main-title span{
-  color:#ffb6d9;
-  text-shadow:0 0 25px #ff2bd6;
+.hero p{
+font-size:20px;
+line-height:1.7;
+color:#dbeafe;
 }
 
-/* RIGHT DESCRIPTION */
-.info{
-  position:absolute;
-  right:30px;
-  top:150px;
-  max-width:340px;
-  font-family:monospace;
-  font-size:12px;
-  color:#d8d8d8;
-  line-height:1.8;
-  animation:fadeUp 1.7s ease;
-}
-
-.info strong{
-  color:white;
-}
-
-/* GLASS 3D OBJECT */
-.glass-object{
-  position:absolute;
-  left:52%;
-  top:48%;
-  width:135px;
-  height:275px;
-  border-radius:50%;
-  border:2px solid rgba(255,255,255,.35);
-  background:
-    linear-gradient(90deg,rgba(255,255,255,.25),rgba(0,204,255,.18),rgba(255,255,255,.06));
-  backdrop-filter:blur(10px);
-  box-shadow:
-    0 0 50px rgba(0,204,255,.7),
-    inset 0 0 35px rgba(255,255,255,.2);
-  transform:translate(-50%,-50%) rotateY(65deg);
-  animation:rotateGlass 4s infinite ease-in-out;
-}
-
-.glass-object::before{
-  content:"";
-  position:absolute;
-  inset:25px;
-  border-radius:50%;
-  border:1px solid rgba(255,255,255,.25);
-}
-
-/* PARTICLES */
-.particle{
-  position:absolute;
-  width:5px;
-  height:5px;
-  background:#ffd86b;
-  border-radius:50%;
-  box-shadow:0 0 15px #ffd86b;
-  animation:particleMove 6s infinite linear;
-}
-
-/* BUTTON */
 .btn{
-  display:inline-block;
-  margin-top:32px;
-  padding:14px 28px;
-  border-radius:30px;
-  color:white;
-  text-decoration:none;
-  border:1px solid rgba(255,255,255,.28);
-  background:rgba(255,255,255,.1);
-  backdrop-filter:blur(12px);
-  box-shadow:0 0 35px rgba(138,44,255,.55);
-  transition:.4s;
+margin-top:30px;
+padding:15px 35px;
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+background:linear-gradient(90deg,#38bdf8,#a855f7);
+color:white;
+box-shadow:0 0 25px #38bdf8;
 }
 
-.btn:hover{
-  transform:translateY(-5px);
-  box-shadow:0 0 55px rgba(0,204,255,.8);
-}
-
-/* SECTIONS */
-section{
-  padding:80px 25px;
-  background:#020204;
-}
-
-.title{
-  text-align:center;
-  font-size:40px;
-  margin-bottom:40px;
-}
-
-.title span{
-  color:#ffb6d9;
-}
-
-.cards{
-  max-width:1000px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
+.services{
+padding:40px 8%;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
 }
 
 .card{
-  padding:30px;
-  border-radius:25px;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.18);
-  backdrop-filter:blur(15px);
-  transition:.4s;
-}
-
-.card:hover{
-  transform:translateY(-12px) rotateX(8deg);
-  box-shadow:0 0 40px rgba(0,204,255,.5);
+padding:30px;
+border-radius:25px;
+background:rgba(15,23,42,0.75);
+border:1px solid #334155;
+box-shadow:0 0 25px #000;
 }
 
 .card h3{
-  color:#ffb6d9;
-  margin-bottom:12px;
-}
-
-.card p{
-  color:#ccc;
-  line-height:1.6;
-}
-
-.contact{
-  text-align:center;
-}
-
-footer{
-  text-align:center;
-  padding:25px;
-  color:#aaa;
-  background:#000;
-}
-
-/* ANIMATIONS */
-@keyframes titleIn{
-  from{
-    opacity:0;
-    filter:blur(15px);
-    letter-spacing:10px;
-    transform:translateY(60px);
-  }
-  to{
-    opacity:1;
-    filter:blur(0);
-    letter-spacing:-4px;
-    transform:translateY(0);
-  }
-}
-
-@keyframes fadeDown{
-  from{opacity:0;transform:translateY(-30px)}
-  to{opacity:1;transform:translateY(0)}
-}
-
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(40px)}
-  to{opacity:1;transform:translateY(0)}
-}
-
-@keyframes rotateGlass{
-  0%,100%{
-    transform:translate(-50%,-50%) rotateY(65deg) rotateZ(0deg);
-  }
-  50%{
-    transform:translate(-50%,-56%) rotateY(250deg) rotateZ(8deg);
-  }
-}
-
-@keyframes gridMove{
-  from{background-position:0 0}
-  to{background-position:130px 130px}
-}
-
-@keyframes particleMove{
-  from{
-    transform:translateY(120vh) scale(.4);
-    opacity:0;
-  }
-  20%{opacity:1}
-  to{
-    transform:translateY(-20vh) scale(1.2);
-    opacity:0;
-  }
+color:#38bdf8;
+margin-bottom:12px;
 }
 
 /* MOBILE */
-@media(max-width:700px){
-  .hero{
-    padding:25px;
-    align-items:flex-start;
-    padding-top:115px;
-  }
+@media(max-width:768px){
+.navbar{
+flex-direction:column;
+gap:15px;
+}
 
-  .nav{
-    right:20px;
-    top:20px;
-  }
+.nav a{
+margin:5px;
+display:inline-block;
+font-size:14px;
+}
 
-  .nav a{
-    font-size:10px;
-    padding:7px 11px;
-  }
+.hero h1{
+font-size:36px;
+}
 
-  .brand{
-    font-size:12px;
-  }
-
-  .main-title{
-    font-size:48px;
-    letter-spacing:-2px;
-  }
-
-  .info{
-    position:relative;
-    right:auto;
-    top:auto;
-    margin-top:30px;
-    max-width:100%;
-  }
-
-  .glass-object{
-    top:70%;
-    left:72%;
-    width:80px;
-    height:175px;
-  }
-
-  .title{
-    font-size:32px;
-  }
+.hero p{
+font-size:16px;
+}
 }
 </style>
 </head>
 
 <body>
 
-<div class="hero">
-
-  <div class="nav">
-    <a href="#work">WORK</a>
-    <a href="#services">SERVICE</a>
-    <a href="#contact">CONTACT</a>
-  </div>
-
-  <span class="particle" style="left:8%;animation-delay:.2s"></span>
-  <span class="particle" style="left:18%;animation-delay:1s"></span>
-  <span class="particle" style="left:35%;animation-delay:2s"></span>
-  <span class="particle" style="left:50%;animation-delay:.8s"></span>
-  <span class="particle" style="left:66%;animation-delay:1.6s"></span>
-  <span class="particle" style="left:82%;animation-delay:2.5s"></span>
-
-  <div class="content">
-
-    <div class="brand">RAVIN TECH SOLUTION</div>
-
-    <h1 class="main-title">
-      Creative<br>
-      Digital<br>
-      <span>Experiences</span>
-    </h1>
-
-    <div class="glass-object"></div>
-
-    <div class="info">
-      <p><strong>FOUNDED IN 2026</strong></p>
-      <br>
-      <p>
-        RAVIN TECH SOLUTION BUILDS PREMIUM WEBSITES,
-        BRAND PAGES, LANDING PAGES AND MODERN DIGITAL EXPERIENCES.
-      </p>
-
-      <a class="btn" href="#contact">START YOUR WEBSITE</a>
-    </div>
-
-  </div>
+<div id="intro">
+<video id="introVideo" autoplay muted playsinline>
+<source src="intro.mp4" type="video/mp4">
+</video>
+<button class="skip" onclick="showWebsite()">Skip Intro</button>
 </div>
 
-<section id="services">
-  <h2 class="title">Our <span>Services</span></h2>
+<div id="website">
 
-  <div class="cards">
-    <div class="card">
-      <h3>Website Design</h3>
-      <p>Premium modern websites for business and personal brands.</p>
-    </div>
+<div class="navbar">
+<div class="logo">RAVIN TECH SOLUTION</div>
+<div class="nav">
+<a href="#">Home</a>
+<a href="#">Services</a>
+<a href="#">Projects</a>
+<a href="#">Contact</a>
+</div>
+</div>
 
-    <div class="card">
-      <h3>Mobile Friendly</h3>
-      <p>Perfect layout for Android, iPhone and desktop screens.</p>
-    </div>
-
-    <div class="card">
-      <h3>Landing Page</h3>
-      <p>High quality one-page websites for promotion and launch.</p>
-    </div>
-
-    <div class="card">
-      <h3>Animation UI</h3>
-      <p>Cinematic glow, particles, 3D object and premium motion.</p>
-    </div>
-  </div>
+<section class="hero">
+<div class="hero-box">
+<h1>RAVIN TECH SOLUTION</h1>
+<p>
+We create premium websites, AI video intros, APK apps,
+game UI designs, posters, and cinematic digital experiences
+with a futuristic neon style.
+</p>
+<button class="btn">Start Project</button>
+</div>
 </section>
 
-<section id="contact" class="contact">
-  <h2 class="title">Create Your <span>Website</span> Today</h2>
-  <a class="btn" href="https://wa.me/919042458779">Chat on WhatsApp</a>
+<section class="services">
+<div class="card">
+<h3>Website Design</h3>
+<p>Modern mobile-friendly websites with premium animation.</p>
+</div>
+
+<div class="card">
+<h3>AI Video Intro</h3>
+<p>Cinematic intro videos for brands, apps and websites.</p>
+</div>
+
+<div class="card">
+<h3>APK App</h3>
+<p>Convert your website into an Android app.</p>
+</div>
+
+<div class="card">
+<h3>Poster Design</h3>
+<p>Political, business and social media poster designs.</p>
+</div>
 </section>
 
-<footer>
-  © 2026 Ravin Tech Solution
-</footer>
+</div>
+
+<script>
+const video = document.getElementById("introVideo");
+
+video.onended = function(){
+showWebsite();
+};
+
+function showWebsite(){
+document.getElementById("intro").style.display="none";
+document.getElementById("website").style.display="block";
+document.body.style.overflow="auto";
+}
+</script>
 
 </body>
-    </html>
+</html>
