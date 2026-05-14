@@ -6,131 +6,164 @@
 <title>Ravin Tech Solution</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  background:#020204;
-  color:white;
-  font-family:Arial,sans-serif;
-  overflow-x:hidden;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#020204;color:white;overflow-x:hidden}
 
+/* HERO */
 .hero{
   min-height:100vh;
   position:relative;
-  padding:30px;
+  padding:35px;
   display:flex;
   align-items:center;
-  justify-content:center;
   background:
-    radial-gradient(circle at 70% 20%,#003bff55,transparent 25%),
-    radial-gradient(circle at 25% 80%,#ff00aa33,transparent 30%),
+    radial-gradient(circle at 75% 20%,rgba(0,68,255,.55),transparent 28%),
+    radial-gradient(circle at 20% 80%,rgba(255,0,160,.28),transparent 34%),
     linear-gradient(120deg,#020204,#070014,#000);
   overflow:hidden;
 }
 
+/* MOVING GRID */
 .hero::before{
   content:"";
   position:absolute;
   inset:0;
   background-image:
-  linear-gradient(#ffffff0d 1px,transparent 1px),
-  linear-gradient(90deg,#ffffff0d 1px,transparent 1px);
-  background-size:60px 60px;
-  animation:grid 18s linear infinite;
+  linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);
+  background-size:65px 65px;
+  animation:gridMove 18s linear infinite;
 }
 
+/* TOP NAV */
 .nav{
   position:absolute;
   top:25px;
   right:35px;
   display:flex;
-  gap:8px;
+  gap:10px;
   z-index:5;
 }
 
 .nav a{
   color:white;
   text-decoration:none;
-  font-size:11px;
-  padding:7px 14px;
-  border:1px solid #ffffff33;
-  border-radius:20px;
-  background:#ffffff10;
-  backdrop-filter:blur(10px);
+  font-size:12px;
+  padding:8px 16px;
+  border-radius:25px;
+  border:1px solid rgba(255,255,255,.25);
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(12px);
 }
 
+/* CONTENT */
 .content{
   width:100%;
-  max-width:1100px;
+  max-width:1150px;
+  margin:auto;
   position:relative;
   z-index:2;
 }
 
+.brand{
+  font-size:14px;
+  letter-spacing:4px;
+  color:#b8b8ff;
+  margin-bottom:25px;
+  animation:fadeDown 1s ease;
+}
+
 .main-title{
-  font-size:80px;
+  font-size:82px;
   line-height:.9;
-  letter-spacing:-3px;
+  letter-spacing:-4px;
   font-weight:900;
   text-transform:uppercase;
-  max-width:650px;
+  max-width:680px;
   animation:titleIn 1.4s ease;
 }
 
 .main-title span{
-  color:#ffb6c9;
+  color:#ffb6d9;
   text-shadow:0 0 25px #ff2bd6;
 }
 
+/* RIGHT DESCRIPTION */
 .info{
   position:absolute;
-  right:40px;
-  top:160px;
-  max-width:330px;
+  right:30px;
+  top:150px;
+  max-width:340px;
   font-family:monospace;
   font-size:12px;
   color:#d8d8d8;
-  line-height:1.7;
-  animation:fadeUp 1.8s ease;
+  line-height:1.8;
+  animation:fadeUp 1.7s ease;
 }
 
-.glass-ring{
+.info strong{
+  color:white;
+}
+
+/* GLASS 3D OBJECT */
+.glass-object{
   position:absolute;
   left:52%;
-  top:45%;
-  width:120px;
-  height:260px;
+  top:48%;
+  width:135px;
+  height:275px;
   border-radius:50%;
-  border:2px solid #ffffff55;
-  background:linear-gradient(90deg,#ffffff33,#00ccff22,#ffffff11);
-  backdrop-filter:blur(8px);
-  box-shadow:0 0 50px #00ccff88;
+  border:2px solid rgba(255,255,255,.35);
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.25),rgba(0,204,255,.18),rgba(255,255,255,.06));
+  backdrop-filter:blur(10px);
+  box-shadow:
+    0 0 50px rgba(0,204,255,.7),
+    inset 0 0 35px rgba(255,255,255,.2);
   transform:translate(-50%,-50%) rotateY(65deg);
-  animation:ringSpin 4s infinite ease-in-out;
+  animation:rotateGlass 4s infinite ease-in-out;
 }
 
-.particles span{
+.glass-object::before{
+  content:"";
+  position:absolute;
+  inset:25px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.25);
+}
+
+/* PARTICLES */
+.particle{
   position:absolute;
   width:5px;
   height:5px;
   background:#ffd86b;
   border-radius:50%;
   box-shadow:0 0 15px #ffd86b;
-  animation:float 6s infinite linear;
+  animation:particleMove 6s infinite linear;
 }
 
+/* BUTTON */
 .btn{
   display:inline-block;
-  margin-top:40px;
+  margin-top:32px;
   padding:14px 28px;
   border-radius:30px;
   color:white;
   text-decoration:none;
-  border:1px solid #ffffff40;
-  background:#ffffff12;
-  backdrop-filter:blur(10px);
-  box-shadow:0 0 30px #8a2cff66;
+  border:1px solid rgba(255,255,255,.28);
+  background:rgba(255,255,255,.1);
+  backdrop-filter:blur(12px);
+  box-shadow:0 0 35px rgba(138,44,255,.55);
+  transition:.4s;
 }
 
+.btn:hover{
+  transform:translateY(-5px);
+  box-shadow:0 0 55px rgba(0,204,255,.8);
+}
+
+/* SECTIONS */
 section{
   padding:80px 25px;
   background:#020204;
@@ -140,6 +173,10 @@ section{
   text-align:center;
   font-size:40px;
   margin-bottom:40px;
+}
+
+.title span{
+  color:#ffb6d9;
 }
 
 .cards{
@@ -153,25 +190,29 @@ section{
 .card{
   padding:30px;
   border-radius:25px;
-  background:#ffffff0d;
-  border:1px solid #ffffff22;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.18);
   backdrop-filter:blur(15px);
   transition:.4s;
 }
 
 .card:hover{
   transform:translateY(-12px) rotateX(8deg);
-  box-shadow:0 0 40px #00ccff55;
+  box-shadow:0 0 40px rgba(0,204,255,.5);
 }
 
 .card h3{
-  color:#ffb6c9;
+  color:#ffb6d9;
   margin-bottom:12px;
 }
 
 .card p{
   color:#ccc;
   line-height:1.6;
+}
+
+.contact{
+  text-align:center;
 }
 
 footer{
@@ -181,9 +222,25 @@ footer{
   background:#000;
 }
 
+/* ANIMATIONS */
 @keyframes titleIn{
-  from{opacity:0;filter:blur(15px);letter-spacing:10px;transform:translateY(60px)}
-  to{opacity:1;filter:blur(0);letter-spacing:-3px;transform:translateY(0)}
+  from{
+    opacity:0;
+    filter:blur(15px);
+    letter-spacing:10px;
+    transform:translateY(60px);
+  }
+  to{
+    opacity:1;
+    filter:blur(0);
+    letter-spacing:-4px;
+    transform:translateY(0);
+  }
+}
+
+@keyframes fadeDown{
+  from{opacity:0;transform:translateY(-30px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
 @keyframes fadeUp{
@@ -191,28 +248,77 @@ footer{
   to{opacity:1;transform:translateY(0)}
 }
 
-@keyframes ringSpin{
-  0%,100%{transform:translate(-50%,-50%) rotateY(65deg) rotateZ(0)}
-  50%{transform:translate(-50%,-55%) rotateY(250deg) rotateZ(8deg)}
+@keyframes rotateGlass{
+  0%,100%{
+    transform:translate(-50%,-50%) rotateY(65deg) rotateZ(0deg);
+  }
+  50%{
+    transform:translate(-50%,-56%) rotateY(250deg) rotateZ(8deg);
+  }
 }
 
-@keyframes grid{
+@keyframes gridMove{
   from{background-position:0 0}
-  to{background-position:120px 120px}
+  to{background-position:130px 130px}
 }
 
-@keyframes float{
-  from{transform:translateY(120vh) scale(.4);opacity:0}
+@keyframes particleMove{
+  from{
+    transform:translateY(120vh) scale(.4);
+    opacity:0;
+  }
   20%{opacity:1}
-  to{transform:translateY(-20vh) scale(1.2);opacity:0}
+  to{
+    transform:translateY(-20vh) scale(1.2);
+    opacity:0;
+  }
 }
 
+/* MOBILE */
 @media(max-width:700px){
-  .hero{padding:25px;align-items:flex-start;padding-top:120px}
-  .main-title{font-size:48px}
-  .info{position:relative;right:auto;top:auto;margin-top:25px}
-  .glass-ring{top:63%;left:70%;width:80px;height:180px}
-  .nav{right:20px;top:20px}
+  .hero{
+    padding:25px;
+    align-items:flex-start;
+    padding-top:115px;
+  }
+
+  .nav{
+    right:20px;
+    top:20px;
+  }
+
+  .nav a{
+    font-size:10px;
+    padding:7px 11px;
+  }
+
+  .brand{
+    font-size:12px;
+  }
+
+  .main-title{
+    font-size:48px;
+    letter-spacing:-2px;
+  }
+
+  .info{
+    position:relative;
+    right:auto;
+    top:auto;
+    margin-top:30px;
+    max-width:100%;
+  }
+
+  .glass-object{
+    top:70%;
+    left:72%;
+    width:80px;
+    height:175px;
+  }
+
+  .title{
+    font-size:32px;
+  }
 }
 </style>
 </head>
@@ -222,31 +328,32 @@ footer{
 <div class="hero">
 
   <div class="nav">
-    <a href="#">WORK</a>
+    <a href="#work">WORK</a>
     <a href="#services">SERVICE</a>
     <a href="#contact">CONTACT</a>
   </div>
 
-  <div class="particles">
-    <span style="left:10%;animation-delay:.2s"></span>
-    <span style="left:20%;animation-delay:1s"></span>
-    <span style="left:35%;animation-delay:2s"></span>
-    <span style="left:50%;animation-delay:.8s"></span>
-    <span style="left:65%;animation-delay:1.6s"></span>
-    <span style="left:80%;animation-delay:2.5s"></span>
-  </div>
+  <span class="particle" style="left:8%;animation-delay:.2s"></span>
+  <span class="particle" style="left:18%;animation-delay:1s"></span>
+  <span class="particle" style="left:35%;animation-delay:2s"></span>
+  <span class="particle" style="left:50%;animation-delay:.8s"></span>
+  <span class="particle" style="left:66%;animation-delay:1.6s"></span>
+  <span class="particle" style="left:82%;animation-delay:2.5s"></span>
 
   <div class="content">
+
+    <div class="brand">RAVIN TECH SOLUTION</div>
+
     <h1 class="main-title">
       Creative<br>
       Digital<br>
       <span>Experiences</span>
     </h1>
 
-    <div class="glass-ring"></div>
+    <div class="glass-object"></div>
 
     <div class="info">
-      <p>FOUNDED IN 2026</p>
+      <p><strong>FOUNDED IN 2026</strong></p>
       <br>
       <p>
         RAVIN TECH SOLUTION BUILDS PREMIUM WEBSITES,
@@ -255,11 +362,12 @@ footer{
 
       <a class="btn" href="#contact">START YOUR WEBSITE</a>
     </div>
+
   </div>
 </div>
 
 <section id="services">
-  <h2 class="title">Our Services</h2>
+  <h2 class="title">Our <span>Services</span></h2>
 
   <div class="cards">
     <div class="card">
@@ -274,7 +382,7 @@ footer{
 
     <div class="card">
       <h3>Landing Page</h3>
-      <p>High quality one page website for promotion and launch.</p>
+      <p>High quality one-page websites for promotion and launch.</p>
     </div>
 
     <div class="card">
@@ -284,11 +392,9 @@ footer{
   </div>
 </section>
 
-<section id="contact">
-  <h2 class="title">Create Your Website Today</h2>
-  <center>
-    <a class="btn" href="https://wa.me/919042458779">Chat on WhatsApp</a>
-  </center>
+<section id="contact" class="contact">
+  <h2 class="title">Create Your <span>Website</span> Today</h2>
+  <a class="btn" href="https://wa.me/919042458779">Chat on WhatsApp</a>
 </section>
 
 <footer>
@@ -296,4 +402,4 @@ footer{
 </footer>
 
 </body>
-      </html>
+    </html>
