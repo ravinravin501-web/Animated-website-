@@ -16,89 +16,42 @@
 }
 
 body{
-  background:#000;
+  background:#02040a;
   color:white;
   overflow-x:hidden;
 }
 
-/* INTRO */
+/* VIDEO INTRO */
 #intro{
   position:fixed;
   inset:0;
-  background:radial-gradient(circle at center,#111,#000 70%);
   z-index:9999;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  animation:hideIntro 7s forwards;
+  background:#000;
+  animation:hideIntro 8s forwards;
 }
 
-.room{
+#intro video{
   width:100%;
   height:100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  perspective:1200px;
+  object-fit:cover;
 }
 
-.man{
+.intro-text{
   position:absolute;
-  bottom:80px;
-  width:150px;
-  height:260px;
-  background:linear-gradient(#222,#000);
-  border-radius:80px 80px 20px 20px;
-  box-shadow:0 0 40px #00eaff;
-}
-
-.man::before{
-  content:"";
-  position:absolute;
-  top:-65px;
-  left:35px;
-  width:80px;
-  height:80px;
-  background:#c98b5a;
-  border-radius:50%;
-}
-
-.laptop{
-  position:absolute;
-  bottom:70px;
-  width:430px;
-  height:260px;
-  background:#050505;
-  border:5px solid #222;
-  border-radius:18px;
-  transform:rotateX(10deg);
-  animation:laptopZoom 7s forwards;
-  box-shadow:0 0 60px #00eaff;
-}
-
-.screen{
-  width:100%;
-  height:100%;
-  background:linear-gradient(135deg,#020024,#090979,#00d4ff);
+  inset:0;
   display:flex;
   justify-content:center;
   align-items:center;
   text-align:center;
-  overflow:hidden;
+  background:rgba(0,0,0,.25);
 }
 
-.screen h1{
-  font-size:32px;
-  letter-spacing:3px;
+.intro-text h1{
+  font-size:45px;
+  letter-spacing:4px;
   color:white;
-  text-shadow:0 0 20px cyan;
-  animation:glowText 2s infinite alternate;
-}
-
-@keyframes laptopZoom{
-  0%{transform:scale(.8) rotateX(10deg);}
-  60%{transform:scale(1.4) rotateX(0);}
-  100%{transform:scale(9);}
+  text-shadow:0 0 20px #008cff,0 0 50px #008cff;
+  animation:pulse 2s infinite alternate;
 }
 
 @keyframes hideIntro{
@@ -106,137 +59,137 @@ body{
   100%{opacity:0;visibility:hidden;}
 }
 
-@keyframes glowText{
-  from{text-shadow:0 0 10px cyan;}
-  to{text-shadow:0 0 35px #fff;}
+@keyframes pulse{
+  from{transform:scale(1);}
+  to{transform:scale(1.08);}
 }
 
-/* MAIN WEBSITE */
+/* MAIN */
 .main{
   min-height:100vh;
   background:
-    radial-gradient(circle at top right,#003cff55,transparent 30%),
-    radial-gradient(circle at bottom left,#00fff255,transparent 30%),
-    #020202;
-  padding:25px;
+  radial-gradient(circle at top right,#004cff55,transparent 35%),
+  radial-gradient(circle at bottom left,#001aff66,transparent 35%),
+  linear-gradient(135deg,#02040a,#050b1f,#000);
 }
 
+/* HEADER */
 header{
+  padding:22px 7%;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:18px 5%;
 }
 
 .logo{
-  font-size:26px;
-  font-weight:bold;
-  color:#00eaff;
-  text-shadow:0 0 20px #00eaff;
+  font-size:25px;
+  font-weight:900;
+  color:#fff;
+  text-shadow:0 0 20px #007bff;
 }
 
 nav a{
   color:white;
   text-decoration:none;
-  margin:0 8px;
-  padding:10px 16px;
-  border:1px solid #00eaff;
+  margin-left:12px;
+  padding:10px 18px;
+  border:1px solid #007bff;
   border-radius:25px;
+  box-shadow:0 0 12px #007bff66;
 }
 
+nav a:hover{
+  background:#007bff;
+}
+
+/* HERO */
 .hero{
-  min-height:80vh;
+  min-height:85vh;
   display:flex;
   align-items:center;
   justify-content:space-around;
-  flex-wrap:wrap;
+  padding:40px 7%;
   gap:40px;
+  flex-wrap:wrap;
 }
 
 .hero-text{
-  max-width:520px;
+  max-width:580px;
 }
 
 .hero-text h1{
-  font-size:55px;
-  color:#fff;
+  font-size:60px;
+  line-height:1.1;
 }
 
 .hero-text span{
-  color:#00eaff;
+  color:#008cff;
+  text-shadow:0 0 25px #008cff;
 }
 
 .hero-text p{
   margin:25px 0;
+  color:#cfd8ff;
   font-size:18px;
-  color:#ccc;
-  line-height:1.6;
+  line-height:1.7;
 }
 
 .btn{
   display:inline-block;
-  background:#00eaff;
-  color:#000;
-  padding:15px 30px;
-  border-radius:35px;
+  padding:16px 35px;
+  background:#008cff;
+  color:white;
   text-decoration:none;
   font-weight:bold;
-  box-shadow:0 0 25px #00eaff;
+  border-radius:40px;
+  box-shadow:0 0 30px #008cff;
 }
 
-/* 3D AI BOX */
-.cube-area{
-  width:300px;
-  height:300px;
-  perspective:1000px;
-}
-
-.cube{
-  width:200px;
-  height:200px;
-  position:relative;
-  transform-style:preserve-3d;
-  animation:rotateCube 8s infinite linear;
-  margin:auto;
-}
-
-.face{
-  position:absolute;
-  width:200px;
-  height:200px;
-  background:rgba(0,234,255,.13);
-  border:2px solid #00eaff;
+/* FUTURE RING */
+.ring-box{
+  width:330px;
+  height:330px;
+  border-radius:50%;
+  border:3px solid #008cff;
   display:flex;
   justify-content:center;
   align-items:center;
-  text-align:center;
-  padding:20px;
-  box-shadow:0 0 30px #00eaff;
-  font-weight:bold;
+  position:relative;
+  box-shadow:0 0 50px #008cff;
+  animation:spin 8s linear infinite;
 }
 
-.front{transform:translateZ(100px);}
-.back{transform:rotateY(180deg) translateZ(100px);}
-.right{transform:rotateY(90deg) translateZ(100px);}
-.left{transform:rotateY(-90deg) translateZ(100px);}
-.top{transform:rotateX(90deg) translateZ(100px);}
-.bottom{transform:rotateX(-90deg) translateZ(100px);}
+.ring-box::before{
+  content:"";
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  border:3px dashed #fff;
+  position:absolute;
+}
 
-@keyframes rotateCube{
-  from{transform:rotateX(0) rotateY(0);}
-  to{transform:rotateX(360deg) rotateY(360deg);}
+.ring-box h2{
+  text-align:center;
+  font-size:28px;
+  text-shadow:0 0 20px white;
+}
+
+@keyframes spin{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
 }
 
 /* SERVICES */
 .services{
-  padding:50px 5%;
+  padding:70px 7%;
   text-align:center;
 }
 
 .services h2{
-  font-size:38px;
-  margin-bottom:35px;
-  color:#00eaff;
+  font-size:42px;
+  margin-bottom:40px;
+  color:#008cff;
+  text-shadow:0 0 25px #008cff;
 }
 
 .cards{
@@ -246,23 +199,24 @@ nav a{
 }
 
 .card{
-  background:#080808;
-  border:1px solid #00eaff;
+  background:rgba(255,255,255,.05);
+  border:1px solid #008cff;
   border-radius:25px;
-  padding:30px 20px;
-  box-shadow:0 0 20px #00eaff44;
+  padding:35px 20px;
+  backdrop-filter:blur(12px);
+  box-shadow:0 0 25px #008cff55;
   transition:.4s;
 }
 
 .card:hover{
-  transform:translateY(-12px) scale(1.03);
-  box-shadow:0 0 35px #00eaff;
+  transform:translateY(-15px) scale(1.04);
+  box-shadow:0 0 45px #008cff;
 }
 
 .card i{
-  font-size:42px;
-  color:#00eaff;
-  margin-bottom:15px;
+  font-size:45px;
+  color:#008cff;
+  margin-bottom:18px;
 }
 
 .card h3{
@@ -272,9 +226,9 @@ nav a{
 /* FOOTER */
 footer{
   text-align:center;
-  padding:35px 20px;
+  padding:40px 20px;
   background:#000;
-  border-top:1px solid #00eaff;
+  border-top:1px solid #008cff;
 }
 
 .whatsapp{
@@ -282,7 +236,7 @@ footer{
   margin-top:20px;
   background:#25D366;
   color:white;
-  padding:15px 25px;
+  padding:15px 28px;
   border-radius:40px;
   text-decoration:none;
   font-weight:bold;
@@ -291,15 +245,6 @@ footer{
 
 /* MOBILE */
 @media(max-width:768px){
-  .laptop{
-    width:300px;
-    height:190px;
-  }
-
-  .screen h1{
-    font-size:22px;
-  }
-
   header{
     flex-direction:column;
     gap:18px;
@@ -310,17 +255,21 @@ footer{
     margin:5px;
   }
 
-  .hero-text h1{
-    font-size:38px;
-    text-align:center;
-  }
-
-  .hero-text p{
-    text-align:center;
-  }
-
   .hero-text{
     text-align:center;
+  }
+
+  .hero-text h1{
+    font-size:40px;
+  }
+
+  .intro-text h1{
+    font-size:28px;
+  }
+
+  .ring-box{
+    width:260px;
+    height:260px;
   }
 }
 </style>
@@ -328,24 +277,22 @@ footer{
 
 <body>
 
-<!-- INTRO -->
+<!-- INTRO VIDEO -->
 <section id="intro">
-  <div class="room">
-    <div class="man"></div>
+  <video autoplay muted playsinline>
+    <source src="intro.mp4" type="video/mp4">
+  </video>
 
-    <div class="laptop">
-      <div class="screen">
-        <h1>RAVIN TECH SOLUTION</h1>
-      </div>
-    </div>
+  <div class="intro-text">
+    <h1>RAVIN TECH SOLUTION</h1>
   </div>
 </section>
 
-<!-- WEBSITE -->
+<!-- MAIN WEBSITE -->
 <div class="main">
 
 <header>
-  <div class="logo">Ravin Tech Solution</div>
+  <div class="logo">RAVIN TECH SOLUTION</div>
   <nav>
     <a href="#">Home</a>
     <a href="#services">Services</a>
@@ -355,10 +302,10 @@ footer{
 
 <section class="hero">
   <div class="hero-text">
-    <h1>Build Your Future With <span>AI Technology</span></h1>
+    <h1>Creating <span>Digital Experience</span></h1>
     <p>
-      We create premium websites, AI designs, cybersecurity solutions,
-      digital posters, business branding and smart technology services.
+      Powerful websites, AI designs, cybersecurity concepts, ethical hacking learning,
+      poster design, business branding and modern tech solutions.
     </p>
 
     <a class="btn" href="https://wa.me/919042458779?text=Hi%20Ravin%20Tech%20Solution%2C%20I%20want%20to%20start%20a%20project">
@@ -366,15 +313,8 @@ footer{
     </a>
   </div>
 
-  <div class="cube-area">
-    <div class="cube">
-      <div class="face front">AI Website</div>
-      <div class="face back">Cyber Security</div>
-      <div class="face right">Ethical Hacking</div>
-      <div class="face left">App Design</div>
-      <div class="face top">Poster Design</div>
-      <div class="face bottom">Tech Support</div>
-    </div>
+  <div class="ring-box">
+    <h2>AI<br>TECH<br>POWER</h2>
   </div>
 </section>
 
@@ -385,25 +325,25 @@ footer{
     <div class="card">
       <i class="fa-solid fa-code"></i>
       <h3>Website Development</h3>
-      <p>Modern responsive websites for business, political pages and portfolios.</p>
+      <p>Premium responsive websites for business and personal brands.</p>
     </div>
 
     <div class="card">
       <i class="fa-solid fa-robot"></i>
       <h3>AI Design</h3>
-      <p>AI posters, cinematic intros, branding visuals and creative content.</p>
+      <p>AI posters, cinematic intros, branding designs and creative visuals.</p>
     </div>
 
     <div class="card">
       <i class="fa-solid fa-shield-halved"></i>
       <h3>Cyber Security</h3>
-      <p>Basic security guidance, protection tips and safe website setup.</p>
+      <p>Security awareness, protection tips and safe website setup.</p>
     </div>
 
     <div class="card">
       <i class="fa-solid fa-user-secret"></i>
       <h3>Ethical Hacking</h3>
-      <p>Learning-based ethical hacking concepts and awareness support.</p>
+      <p>Learning-based ethical hacking knowledge and tech support.</p>
     </div>
   </div>
 </section>
