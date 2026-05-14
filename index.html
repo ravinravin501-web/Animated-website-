@@ -37,12 +37,40 @@ background:#000;
 z-index:9999;
 overflow:hidden;
 transition:1s ease;
+perspective:1200px;
 }
 
 #intro video{
 width:100%;
 height:100%;
 object-fit:cover;
+animation:laptopView 7s ease forwards;
+}
+
+/* CAMERA ENTERING LAPTOP */
+
+@keyframes laptopView{
+
+0%{
+transform:scale(1) translateY(0);
+filter:brightness(0.8) blur(0);
+}
+
+40%{
+transform:scale(1.15) translateY(-10px);
+filter:brightness(1);
+}
+
+70%{
+transform:scale(1.45) translateY(-25px);
+filter:brightness(1.1);
+}
+
+100%{
+transform:scale(2.4) translateY(-40px);
+filter:brightness(1.2) blur(2px);
+}
+
 }
 
 /* =========================
@@ -72,7 +100,6 @@ linear-gradient(
 );
 
 border:2px solid #38bdf8;
-
 border-radius:14px;
 
 display:flex;
@@ -83,7 +110,6 @@ align-items:center;
 text-align:center;
 
 opacity:0;
-
 overflow:hidden;
 
 box-shadow:
@@ -99,9 +125,7 @@ animation-delay:1.5s;
 font-size:20px;
 color:#38bdf8;
 margin-bottom:8px;
-
-text-shadow:
-0 0 20px #38bdf8;
+text-shadow:0 0 20px #38bdf8;
 }
 
 .laptop-site p{
@@ -111,11 +135,12 @@ padding:0 12px;
 color:#dbeafe;
 }
 
+/* LAPTOP SCREEN */
+
 @keyframes laptopScreenZoom{
 
 0%{
 opacity:0;
-
 transform:
 translate(-50%,-50%)
 scale(0.25);
@@ -123,7 +148,6 @@ scale(0.25);
 
 30%{
 opacity:1;
-
 transform:
 translate(-50%,-50%)
 scale(0.75);
@@ -131,7 +155,6 @@ scale(0.75);
 
 75%{
 opacity:1;
-
 transform:
 translate(-50%,-50%)
 scale(0.9);
@@ -139,7 +162,6 @@ scale(0.9);
 
 100%{
 opacity:1;
-
 transform:
 translate(-50%,-50%)
 scale(1.1);
@@ -186,7 +208,6 @@ NAVBAR
 
 .navbar{
 padding:20px 7%;
-
 display:flex;
 justify-content:space-between;
 align-items:center;
@@ -207,33 +228,23 @@ z-index:1000;
 font-size:26px;
 font-weight:bold;
 color:#38bdf8;
-
-text-shadow:
-0 0 20px #38bdf8;
+text-shadow:0 0 20px #38bdf8;
 }
 
 .nav a{
 text-decoration:none;
 color:white;
-
 margin-left:10px;
-
 padding:10px 18px;
-
 border-radius:30px;
-
-border:
-1px solid rgba(56,189,248,0.4);
-
+border:1px solid rgba(56,189,248,0.4);
 transition:0.3s;
 }
 
 .nav a:hover{
 background:#38bdf8;
 color:#000;
-
-box-shadow:
-0 0 20px #38bdf8;
+box-shadow:0 0 20px #38bdf8;
 }
 
 /* =========================
@@ -242,42 +253,29 @@ HERO
 
 .hero{
 min-height:90vh;
-
 display:flex;
 justify-content:center;
 align-items:center;
-
 padding:30px;
-
 text-align:center;
-
 position:relative;
 }
 
 .hero::before{
 content:"";
-
 position:absolute;
-
 width:350px;
 height:350px;
-
 background:#38bdf8;
-
 filter:blur(150px);
-
 opacity:0.3;
-
 border-radius:50%;
 }
 
 .hero-box{
-
 position:relative;
-
 width:360px;
 height:360px;
-
 padding:30px;
 
 display:flex;
@@ -334,9 +332,7 @@ scale(1);
 font-size:42px;
 margin-bottom:18px;
 color:#38bdf8;
-
-text-shadow:
-0 0 30px #38bdf8;
+text-shadow:0 0 30px #38bdf8;
 }
 
 .hero p{
@@ -349,15 +345,11 @@ color:#dbeafe;
 
 .btn{
 margin-top:25px;
-
 padding:15px 35px;
-
 border:none;
 border-radius:35px;
-
 font-size:18px;
 font-weight:bold;
-
 cursor:pointer;
 
 background:
@@ -368,7 +360,6 @@ linear-gradient(
 );
 
 color:white;
-
 text-decoration:none;
 
 box-shadow:
@@ -382,11 +373,11 @@ transform:scale(1.08);
 }
 
 /* =========================
-3D CAR SECTION
+3D ROAD
 ========================= */
 
 .car-scene{
-height:420px;
+height:450px;
 position:relative;
 overflow:hidden;
 
@@ -404,11 +395,8 @@ to bottom,
 perspective:1000px;
 }
 
-/* ROAD */
-
 .road{
 position:absolute;
-
 bottom:-120px;
 
 width:650px;
@@ -430,13 +418,12 @@ box-shadow:
 0 0 40px #38bdf8;
 }
 
-/* ROAD LIGHTS */
-
 .road::before{
 content:"";
 
 position:absolute;
 left:50%;
+
 transform:translateX(-50%);
 
 width:10px;
@@ -450,30 +437,166 @@ transparent 30px 60px
 );
 }
 
-/* CAR */
+/* =========================
+AI LAMBORGHINI
+========================= */
 
-.car{
+.lambo-car{
 position:absolute;
-
-bottom:90px;
-
-font-size:100px;
+bottom:85px;
+width:260px;
+height:120px;
 
 animation:
-carComing 4s ease-in-out infinite;
+lamboComing 4s ease-in-out infinite;
 
 filter:
-drop-shadow(0 0 25px #38bdf8);
+drop-shadow(0 0 35px #38bdf8);
 }
 
-/* CAR ANIMATION */
+.car-body{
+position:absolute;
+bottom:0;
 
-@keyframes carComing{
+width:100%;
+height:70px;
+
+background:
+linear-gradient(
+135deg,
+#facc15,
+#f97316,
+#ef4444
+);
+
+clip-path:polygon(
+8% 80%,
+18% 35%,
+38% 20%,
+65% 22%,
+82% 38%,
+95% 80%,
+88% 100%,
+12% 100%
+);
+
+border:2px solid rgba(255,255,255,0.4);
+
+box-shadow:
+0 0 25px rgba(250,204,21,0.9),
+inset 0 0 20px rgba(255,255,255,0.25);
+}
+
+.windshield{
+position:absolute;
+top:14px;
+left:82px;
+
+width:95px;
+height:30px;
+
+background:
+linear-gradient(
+135deg,
+#020617,
+#38bdf8
+);
+
+clip-path:polygon(
+15% 100%,
+35% 0,
+75% 0,
+100% 100%
+);
+
+border:1px solid #38bdf8;
+}
+
+.headlight{
+position:absolute;
+bottom:18px;
+
+width:42px;
+height:10px;
+
+background:#e0f2fe;
+
+box-shadow:
+0 0 25px #38bdf8;
+}
+
+.left-light{
+left:22px;
+transform:skewX(-25deg);
+}
+
+.right-light{
+right:22px;
+transform:skewX(25deg);
+}
+
+.grill{
+position:absolute;
+bottom:7px;
+left:50%;
+
+transform:translateX(-50%);
+
+width:70px;
+height:12px;
+
+background:#020617;
+
+border-radius:20px;
+
+box-shadow:
+inset 0 0 8px #38bdf8;
+}
+
+.wheel{
+position:absolute;
+bottom:-18px;
+
+width:45px;
+height:45px;
+
+background:#020617;
+
+border:5px solid #94a3b8;
+
+border-radius:50%;
+
+box-shadow:
+0 0 12px #000,
+inset 0 0 10px #38bdf8;
+
+animation:
+wheelSpin 0.6s linear infinite;
+}
+
+.left-wheel{
+left:45px;
+}
+
+.right-wheel{
+right:45px;
+}
+
+@keyframes wheelSpin{
+from{
+transform:rotate(0deg);
+}
+to{
+transform:rotate(360deg);
+}
+}
+
+@keyframes lamboComing{
 
 0%{
 transform:
-translateY(-180px)
-scale(0.2);
+translateY(-170px)
+scale(0.25);
 
 opacity:0;
 }
@@ -485,14 +608,16 @@ opacity:1;
 100%{
 transform:
 translateY(0)
-scale(1.3);
+scale(1.25);
 
 opacity:1;
 }
 
 }
 
-/* FLAG BUTTON */
+/* =========================
+FLAG BUTTON
+========================= */
 
 .flag-btn{
 position:absolute;
@@ -537,8 +662,6 @@ height:55px;
 
 background:white;
 }
-
-/* FLAG ANIMATION */
 
 @keyframes flagWave{
 
@@ -600,9 +723,7 @@ FOOTER
 
 .footer{
 padding:30px 20px 45px;
-
 text-align:center;
-
 color:#94a3b8;
 
 border-top:
@@ -612,8 +733,6 @@ border-top:
 .footer p{
 margin-bottom:20px;
 }
-
-/* WHATSAPP */
 
 .whatsapp-btn{
 display:inline-block;
@@ -630,7 +749,6 @@ linear-gradient(
 );
 
 color:white;
-
 text-decoration:none;
 
 font-size:18px;
@@ -681,10 +799,7 @@ font-size:28px;
 font-size:14px;
 }
 
-/* MOBILE LAPTOP */
-
 .laptop-site{
-
 top:52%;
 left:50%;
 
@@ -694,7 +809,6 @@ height:125px;
 transform:
 translate(-50%,-50%)
 scale(0.65);
-
 }
 
 .laptop-site h1{
@@ -705,20 +819,19 @@ font-size:16px;
 font-size:10px;
 }
 
-/* MOBILE ROAD */
-
 .road{
 width:420px;
 height:420px;
 }
 
-.car{
-font-size:70px;
+.lambo-car{
+width:210px;
+height:100px;
 bottom:70px;
 }
 
 .flag-btn{
-right:-70px;
+right:-65px;
 font-size:12px;
 padding:8px 12px;
 }
@@ -810,15 +923,29 @@ Start Project
 
 </section>
 
-<!-- 3D CAR SECTION -->
+<!-- AI LAMBORGHINI SECTION -->
 
 <section class="car-scene">
 
 <div class="road"></div>
 
-<div class="car">
+<div class="lambo-car">
 
-🚘
+<div class="car-body">
+
+<div class="windshield"></div>
+
+<div class="headlight left-light"></div>
+
+<div class="headlight right-light"></div>
+
+<div class="grill"></div>
+
+<div class="wheel left-wheel"></div>
+
+<div class="wheel right-wheel"></div>
+
+</div>
 
 <a href="https://wa.me/919042458779"
 class="flag-btn">
@@ -897,10 +1024,7 @@ document.getElementById("intro");
 const website =
 document.getElementById("website");
 
-/*
-After laptop intro →
-show website
-*/
+/* AFTER INTRO */
 
 setTimeout(()=>{
 
@@ -916,7 +1040,7 @@ document.body.style.overflow="auto";
 
 },1000);
 
-},6500);
+},7000);
 
 </script>
 
