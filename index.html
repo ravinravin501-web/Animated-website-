@@ -2,1047 +2,421 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ravin Tech Solution</title>
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
-
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-scroll-behavior:smooth;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
 }
 
 body{
-background:#000;
-color:white;
-overflow:hidden;
+  background:#000;
+  color:white;
+  overflow-x:hidden;
 }
 
-/* =========================
-INTRO
-========================= */
-
+/* INTRO */
 #intro{
-position:fixed;
-inset:0;
-background:#000;
-z-index:9999;
-overflow:hidden;
-transition:1s ease;
-perspective:1200px;
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle at center,#111,#000 70%);
+  z-index:9999;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  animation:hideIntro 7s forwards;
 }
 
-#intro video{
-width:100%;
-height:100%;
-object-fit:cover;
-animation:laptopView 7s ease forwards;
+.room{
+  width:100%;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  perspective:1200px;
 }
 
-/* CAMERA ENTERING LAPTOP */
-
-@keyframes laptopView{
-
-0%{
-transform:scale(1) translateY(0);
-filter:brightness(0.8) blur(0);
+.man{
+  position:absolute;
+  bottom:80px;
+  width:150px;
+  height:260px;
+  background:linear-gradient(#222,#000);
+  border-radius:80px 80px 20px 20px;
+  box-shadow:0 0 40px #00eaff;
 }
 
-40%{
-transform:scale(1.15) translateY(-10px);
-filter:brightness(1);
+.man::before{
+  content:"";
+  position:absolute;
+  top:-65px;
+  left:35px;
+  width:80px;
+  height:80px;
+  background:#c98b5a;
+  border-radius:50%;
 }
 
-70%{
-transform:scale(1.45) translateY(-25px);
-filter:brightness(1.1);
+.laptop{
+  position:absolute;
+  bottom:70px;
+  width:430px;
+  height:260px;
+  background:#050505;
+  border:5px solid #222;
+  border-radius:18px;
+  transform:rotateX(10deg);
+  animation:laptopZoom 7s forwards;
+  box-shadow:0 0 60px #00eaff;
 }
 
-100%{
-transform:scale(2.4) translateY(-40px);
-filter:brightness(1.2) blur(2px);
+.screen{
+  width:100%;
+  height:100%;
+  background:linear-gradient(135deg,#020024,#090979,#00d4ff);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  overflow:hidden;
 }
 
+.screen h1{
+  font-size:32px;
+  letter-spacing:3px;
+  color:white;
+  text-shadow:0 0 20px cyan;
+  animation:glowText 2s infinite alternate;
 }
 
-/* =========================
-LAPTOP WEBSITE
-========================= */
-
-.laptop-site{
-
-position:absolute;
-
-top:52%;
-left:36%;
-
-transform:
-translate(-50%,-50%)
-scale(0.75);
-
-width:260px;
-height:155px;
-
-background:
-linear-gradient(
-135deg,
-#020617,
-#0f172a,
-#111827
-);
-
-border:2px solid #38bdf8;
-border-radius:14px;
-
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-
-text-align:center;
-
-opacity:0;
-overflow:hidden;
-
-box-shadow:
-0 0 30px rgba(56,189,248,0.7);
-
-animation:
-laptopScreenZoom 5s ease forwards;
-
-animation-delay:1.5s;
+@keyframes laptopZoom{
+  0%{transform:scale(.8) rotateX(10deg);}
+  60%{transform:scale(1.4) rotateX(0);}
+  100%{transform:scale(9);}
 }
 
-.laptop-site h1{
-font-size:20px;
-color:#38bdf8;
-margin-bottom:8px;
-text-shadow:0 0 20px #38bdf8;
+@keyframes hideIntro{
+  0%,85%{opacity:1;visibility:visible;}
+  100%{opacity:0;visibility:hidden;}
 }
 
-.laptop-site p{
-font-size:12px;
-line-height:1.5;
-padding:0 12px;
-color:#dbeafe;
+@keyframes glowText{
+  from{text-shadow:0 0 10px cyan;}
+  to{text-shadow:0 0 35px #fff;}
 }
 
-/* LAPTOP SCREEN */
-
-@keyframes laptopScreenZoom{
-
-0%{
-opacity:0;
-transform:
-translate(-50%,-50%)
-scale(0.25);
+/* MAIN WEBSITE */
+.main{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top right,#003cff55,transparent 30%),
+    radial-gradient(circle at bottom left,#00fff255,transparent 30%),
+    #020202;
+  padding:25px;
 }
 
-30%{
-opacity:1;
-transform:
-translate(-50%,-50%)
-scale(0.75);
-}
-
-75%{
-opacity:1;
-transform:
-translate(-50%,-50%)
-scale(0.9);
-}
-
-100%{
-opacity:1;
-transform:
-translate(-50%,-50%)
-scale(1.1);
-}
-
-}
-
-/* =========================
-WEBSITE
-========================= */
-
-#website{
-display:none;
-min-height:100vh;
-overflow:auto;
-
-background:
-radial-gradient(circle at top left,#00d9ff33,transparent 35%),
-radial-gradient(circle at bottom right,#8b5cf644,transparent 35%),
-linear-gradient(135deg,#020617,#0f172a,#000);
-
-animation:websiteShow 1.2s ease forwards;
-}
-
-@keyframes websiteShow{
-
-0%{
-opacity:0;
-transform:scale(1.2);
-filter:blur(20px);
-}
-
-100%{
-opacity:1;
-transform:scale(1);
-filter:blur(0);
-}
-
-}
-
-/* =========================
-NAVBAR
-========================= */
-
-.navbar{
-padding:20px 7%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-
-background:rgba(0,0,0,0.45);
-
-backdrop-filter:blur(15px);
-
-border-bottom:
-1px solid rgba(56,189,248,0.3);
-
-position:sticky;
-top:0;
-z-index:1000;
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 5%;
 }
 
 .logo{
-font-size:26px;
-font-weight:bold;
-color:#38bdf8;
-text-shadow:0 0 20px #38bdf8;
+  font-size:26px;
+  font-weight:bold;
+  color:#00eaff;
+  text-shadow:0 0 20px #00eaff;
 }
 
-.nav a{
-text-decoration:none;
-color:white;
-margin-left:10px;
-padding:10px 18px;
-border-radius:30px;
-border:1px solid rgba(56,189,248,0.4);
-transition:0.3s;
+nav a{
+  color:white;
+  text-decoration:none;
+  margin:0 8px;
+  padding:10px 16px;
+  border:1px solid #00eaff;
+  border-radius:25px;
 }
-
-.nav a:hover{
-background:#38bdf8;
-color:#000;
-box-shadow:0 0 20px #38bdf8;
-}
-
-/* =========================
-HERO
-========================= */
 
 .hero{
-min-height:90vh;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:30px;
-text-align:center;
-position:relative;
+  min-height:80vh;
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+  flex-wrap:wrap;
+  gap:40px;
 }
 
-.hero::before{
-content:"";
-position:absolute;
-width:350px;
-height:350px;
-background:#38bdf8;
-filter:blur(150px);
-opacity:0.3;
-border-radius:50%;
+.hero-text{
+  max-width:520px;
 }
 
-.hero-box{
-position:relative;
-width:360px;
-height:360px;
-padding:30px;
-
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-
-background:
-linear-gradient(
-145deg,
-rgba(15,23,42,0.9),
-rgba(30,41,59,0.7)
-);
-
-backdrop-filter:blur(18px);
-
-border:
-1px solid rgba(56,189,248,0.35);
-
-border-radius:35px;
-
-box-shadow:
-0 25px 60px rgba(0,0,0,0.6),
-0 0 45px rgba(56,189,248,0.25);
-
-animation:heroRotate 2s ease;
+.hero-text h1{
+  font-size:55px;
+  color:#fff;
 }
 
-@keyframes heroRotate{
-
-0%{
-opacity:0;
-
-transform:
-perspective(1200px)
-rotateX(80deg)
-translateY(200px)
-scale(0.5);
+.hero-text span{
+  color:#00eaff;
 }
 
-100%{
-opacity:1;
-
-transform:
-perspective(1200px)
-rotateX(0)
-translateY(0)
-scale(1);
+.hero-text p{
+  margin:25px 0;
+  font-size:18px;
+  color:#ccc;
+  line-height:1.6;
 }
-
-}
-
-.hero h1{
-font-size:42px;
-margin-bottom:18px;
-color:#38bdf8;
-text-shadow:0 0 30px #38bdf8;
-}
-
-.hero p{
-font-size:16px;
-line-height:1.7;
-color:#dbeafe;
-}
-
-/* BUTTON */
 
 .btn{
-margin-top:25px;
-padding:15px 35px;
-border:none;
-border-radius:35px;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-
-background:
-linear-gradient(
-90deg,
-#38bdf8,
-#8b5cf6
-);
-
-color:white;
-text-decoration:none;
-
-box-shadow:
-0 0 25px rgba(56,189,248,0.8);
-
-transition:0.3s;
+  display:inline-block;
+  background:#00eaff;
+  color:#000;
+  padding:15px 30px;
+  border-radius:35px;
+  text-decoration:none;
+  font-weight:bold;
+  box-shadow:0 0 25px #00eaff;
 }
 
-.btn:hover{
-transform:scale(1.08);
+/* 3D AI BOX */
+.cube-area{
+  width:300px;
+  height:300px;
+  perspective:1000px;
 }
 
-/* =========================
-3D ROAD
-========================= */
-
-.car-scene{
-height:450px;
-position:relative;
-overflow:hidden;
-
-display:flex;
-justify-content:center;
-align-items:flex-end;
-
-background:
-linear-gradient(
-to bottom,
-#020617,
-#000
-);
-
-perspective:1000px;
+.cube{
+  width:200px;
+  height:200px;
+  position:relative;
+  transform-style:preserve-3d;
+  animation:rotateCube 8s infinite linear;
+  margin:auto;
 }
 
-.road{
-position:absolute;
-bottom:-120px;
-
-width:650px;
-height:520px;
-
-background:
-linear-gradient(
-#111,
-#000
-);
-
-transform:
-rotateX(70deg);
-
-border-left:6px solid #38bdf8;
-border-right:6px solid #38bdf8;
-
-box-shadow:
-0 0 40px #38bdf8;
+.face{
+  position:absolute;
+  width:200px;
+  height:200px;
+  background:rgba(0,234,255,.13);
+  border:2px solid #00eaff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+  box-shadow:0 0 30px #00eaff;
+  font-weight:bold;
 }
 
-.road::before{
-content:"";
+.front{transform:translateZ(100px);}
+.back{transform:rotateY(180deg) translateZ(100px);}
+.right{transform:rotateY(90deg) translateZ(100px);}
+.left{transform:rotateY(-90deg) translateZ(100px);}
+.top{transform:rotateX(90deg) translateZ(100px);}
+.bottom{transform:rotateX(-90deg) translateZ(100px);}
 
-position:absolute;
-left:50%;
-
-transform:translateX(-50%);
-
-width:10px;
-height:100%;
-
-background:
-repeating-linear-gradient(
-to bottom,
-white 0 30px,
-transparent 30px 60px
-);
+@keyframes rotateCube{
+  from{transform:rotateX(0) rotateY(0);}
+  to{transform:rotateX(360deg) rotateY(360deg);}
 }
 
-/* =========================
-AI LAMBORGHINI
-========================= */
-
-.lambo-car{
-position:absolute;
-bottom:85px;
-width:260px;
-height:120px;
-
-animation:
-lamboComing 4s ease-in-out infinite;
-
-filter:
-drop-shadow(0 0 35px #38bdf8);
-}
-
-.car-body{
-position:absolute;
-bottom:0;
-
-width:100%;
-height:70px;
-
-background:
-linear-gradient(
-135deg,
-#facc15,
-#f97316,
-#ef4444
-);
-
-clip-path:polygon(
-8% 80%,
-18% 35%,
-38% 20%,
-65% 22%,
-82% 38%,
-95% 80%,
-88% 100%,
-12% 100%
-);
-
-border:2px solid rgba(255,255,255,0.4);
-
-box-shadow:
-0 0 25px rgba(250,204,21,0.9),
-inset 0 0 20px rgba(255,255,255,0.25);
-}
-
-.windshield{
-position:absolute;
-top:14px;
-left:82px;
-
-width:95px;
-height:30px;
-
-background:
-linear-gradient(
-135deg,
-#020617,
-#38bdf8
-);
-
-clip-path:polygon(
-15% 100%,
-35% 0,
-75% 0,
-100% 100%
-);
-
-border:1px solid #38bdf8;
-}
-
-.headlight{
-position:absolute;
-bottom:18px;
-
-width:42px;
-height:10px;
-
-background:#e0f2fe;
-
-box-shadow:
-0 0 25px #38bdf8;
-}
-
-.left-light{
-left:22px;
-transform:skewX(-25deg);
-}
-
-.right-light{
-right:22px;
-transform:skewX(25deg);
-}
-
-.grill{
-position:absolute;
-bottom:7px;
-left:50%;
-
-transform:translateX(-50%);
-
-width:70px;
-height:12px;
-
-background:#020617;
-
-border-radius:20px;
-
-box-shadow:
-inset 0 0 8px #38bdf8;
-}
-
-.wheel{
-position:absolute;
-bottom:-18px;
-
-width:45px;
-height:45px;
-
-background:#020617;
-
-border:5px solid #94a3b8;
-
-border-radius:50%;
-
-box-shadow:
-0 0 12px #000,
-inset 0 0 10px #38bdf8;
-
-animation:
-wheelSpin 0.6s linear infinite;
-}
-
-.left-wheel{
-left:45px;
-}
-
-.right-wheel{
-right:45px;
-}
-
-@keyframes wheelSpin{
-from{
-transform:rotate(0deg);
-}
-to{
-transform:rotate(360deg);
-}
-}
-
-@keyframes lamboComing{
-
-0%{
-transform:
-translateY(-170px)
-scale(0.25);
-
-opacity:0;
-}
-
-40%{
-opacity:1;
-}
-
-100%{
-transform:
-translateY(0)
-scale(1.25);
-
-opacity:1;
-}
-
-}
-
-/* =========================
-FLAG BUTTON
-========================= */
-
-.flag-btn{
-position:absolute;
-
-top:-25px;
-right:-100px;
-
-background:
-linear-gradient(
-135deg,
-#25D366,
-#128C7E
-);
-
-color:white;
-
-padding:10px 18px;
-
-border-radius:8px;
-
-text-decoration:none;
-
-font-weight:bold;
-
-box-shadow:
-0 0 25px #25D366;
-
-animation:
-flagWave 1.2s infinite alternate;
-}
-
-.flag-btn::before{
-content:"";
-
-position:absolute;
-
-left:-8px;
-top:0;
-
-width:5px;
-height:55px;
-
-background:white;
-}
-
-@keyframes flagWave{
-
-from{
-transform:rotate(-5deg);
-}
-
-to{
-transform:rotate(6deg);
-}
-
-}
-
-/* =========================
-SERVICES
-========================= */
-
+/* SERVICES */
 .services{
-padding:40px 7% 70px;
+  padding:50px 5%;
+  text-align:center;
+}
 
-display:grid;
+.services h2{
+  font-size:38px;
+  margin-bottom:35px;
+  color:#00eaff;
+}
 
-grid-template-columns:
-repeat(auto-fit,minmax(220px,1fr));
-
-gap:22px;
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:25px;
 }
 
 .card{
-padding:30px;
-
-border-radius:28px;
-
-background:rgba(15,23,42,0.78);
-
-border:
-1px solid rgba(56,189,248,0.25);
-
-transition:0.3s;
+  background:#080808;
+  border:1px solid #00eaff;
+  border-radius:25px;
+  padding:30px 20px;
+  box-shadow:0 0 20px #00eaff44;
+  transition:.4s;
 }
 
 .card:hover{
-transform:
-translateY(-10px)
-scale(1.03);
+  transform:translateY(-12px) scale(1.03);
+  box-shadow:0 0 35px #00eaff;
+}
 
-box-shadow:
-0 0 35px rgba(56,189,248,0.55);
+.card i{
+  font-size:42px;
+  color:#00eaff;
+  margin-bottom:15px;
 }
 
 .card h3{
-color:#38bdf8;
-margin-bottom:12px;
+  margin-bottom:12px;
 }
 
-/* =========================
-FOOTER
-========================= */
-
-.footer{
-padding:30px 20px 45px;
-text-align:center;
-color:#94a3b8;
-
-border-top:
-1px solid rgba(255,255,255,0.1);
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:35px 20px;
+  background:#000;
+  border-top:1px solid #00eaff;
 }
 
-.footer p{
-margin-bottom:20px;
+.whatsapp{
+  display:inline-block;
+  margin-top:20px;
+  background:#25D366;
+  color:white;
+  padding:15px 25px;
+  border-radius:40px;
+  text-decoration:none;
+  font-weight:bold;
+  box-shadow:0 0 25px #25D366;
 }
 
-.whatsapp-btn{
-display:inline-block;
-
-padding:15px 34px;
-
-border-radius:40px;
-
-background:
-linear-gradient(
-135deg,
-#25D366,
-#128C7E
-);
-
-color:white;
-text-decoration:none;
-
-font-size:18px;
-font-weight:bold;
-
-box-shadow:
-0 0 25px rgba(37,211,102,0.7);
-
-transition:0.3s;
-}
-
-.whatsapp-btn:hover{
-transform:scale(1.08);
-}
-
-/* =========================
-MOBILE
-========================= */
-
+/* MOBILE */
 @media(max-width:768px){
+  .laptop{
+    width:300px;
+    height:190px;
+  }
 
-.navbar{
-flex-direction:column;
-gap:15px;
+  .screen h1{
+    font-size:22px;
+  }
+
+  header{
+    flex-direction:column;
+    gap:18px;
+  }
+
+  nav a{
+    display:inline-block;
+    margin:5px;
+  }
+
+  .hero-text h1{
+    font-size:38px;
+    text-align:center;
+  }
+
+  .hero-text p{
+    text-align:center;
+  }
+
+  .hero-text{
+    text-align:center;
+  }
 }
-
-.nav{
-text-align:center;
-}
-
-.nav a{
-display:inline-block;
-margin:5px;
-font-size:14px;
-}
-
-.hero-box{
-width:310px;
-height:310px;
-padding:22px;
-}
-
-.hero h1{
-font-size:28px;
-}
-
-.hero p{
-font-size:14px;
-}
-
-.laptop-site{
-top:52%;
-left:50%;
-
-width:210px;
-height:125px;
-
-transform:
-translate(-50%,-50%)
-scale(0.65);
-}
-
-.laptop-site h1{
-font-size:16px;
-}
-
-.laptop-site p{
-font-size:10px;
-}
-
-.road{
-width:420px;
-height:420px;
-}
-
-.lambo-car{
-width:210px;
-height:100px;
-bottom:70px;
-}
-
-.flag-btn{
-right:-65px;
-font-size:12px;
-padding:8px 12px;
-}
-
-}
-
 </style>
 </head>
 
 <body>
 
 <!-- INTRO -->
+<section id="intro">
+  <div class="room">
+    <div class="man"></div>
 
-<div id="intro">
-
-<video id="introVideo"
-autoplay
-muted
-playsinline>
-
-<source src="intro.mp4"
-type="video/mp4">
-
-</video>
-
-<!-- WEBSITE INSIDE LAPTOP -->
-
-<div class="laptop-site">
-
-<h1>
-RAVIN TECH SOLUTION
-</h1>
-
-<p>
-Cyber Security • Ethical Hacking
-• AI Automation • Web Design
-</p>
-
-</div>
-
-</div>
+    <div class="laptop">
+      <div class="screen">
+        <h1>RAVIN TECH SOLUTION</h1>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- WEBSITE -->
+<div class="main">
 
-<div id="website">
-
-<!-- NAVBAR -->
-
-<div class="navbar">
-
-<div class="logo">
-RAVIN TECH SOLUTION
-</div>
-
-<div class="nav">
-<a href="#">Home</a>
-<a href="#">Services</a>
-<a href="#">Projects</a>
-<a href="#">Contact</a>
-</div>
-
-</div>
-
-<!-- HERO -->
+<header>
+  <div class="logo">Ravin Tech Solution</div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
 <section class="hero">
+  <div class="hero-text">
+    <h1>Build Your Future With <span>AI Technology</span></h1>
+    <p>
+      We create premium websites, AI designs, cybersecurity solutions,
+      digital posters, business branding and smart technology services.
+    </p>
 
-<div class="hero-box">
+    <a class="btn" href="https://wa.me/919042458779?text=Hi%20Ravin%20Tech%20Solution%2C%20I%20want%20to%20start%20a%20project">
+      Start Project
+    </a>
+  </div>
 
-<h1>
-RAVIN TECH SOLUTION
-</h1>
-
-<p>
-Premium websites, AI intros,
-cybersecurity, ethical hacking,
-APK apps and futuristic digital
-experiences.
-</p>
-
-<a href="https://wa.me/919042458779"
-class="btn">
-
-Start Project
-
-</a>
-
-</div>
-
+  <div class="cube-area">
+    <div class="cube">
+      <div class="face front">AI Website</div>
+      <div class="face back">Cyber Security</div>
+      <div class="face right">Ethical Hacking</div>
+      <div class="face left">App Design</div>
+      <div class="face top">Poster Design</div>
+      <div class="face bottom">Tech Support</div>
+    </div>
+  </div>
 </section>
 
-<!-- AI LAMBORGHINI SECTION -->
+<section class="services" id="services">
+  <h2>Our Services</h2>
 
-<section class="car-scene">
+  <div class="cards">
+    <div class="card">
+      <i class="fa-solid fa-code"></i>
+      <h3>Website Development</h3>
+      <p>Modern responsive websites for business, political pages and portfolios.</p>
+    </div>
 
-<div class="road"></div>
+    <div class="card">
+      <i class="fa-solid fa-robot"></i>
+      <h3>AI Design</h3>
+      <p>AI posters, cinematic intros, branding visuals and creative content.</p>
+    </div>
 
-<div class="lambo-car">
+    <div class="card">
+      <i class="fa-solid fa-shield-halved"></i>
+      <h3>Cyber Security</h3>
+      <p>Basic security guidance, protection tips and safe website setup.</p>
+    </div>
 
-<div class="car-body">
-
-<div class="windshield"></div>
-
-<div class="headlight left-light"></div>
-
-<div class="headlight right-light"></div>
-
-<div class="grill"></div>
-
-<div class="wheel left-wheel"></div>
-
-<div class="wheel right-wheel"></div>
-
-</div>
-
-<a href="https://wa.me/919042458779"
-class="flag-btn">
-
-WhatsApp
-
-</a>
-
-</div>
-
+    <div class="card">
+      <i class="fa-solid fa-user-secret"></i>
+      <h3>Ethical Hacking</h3>
+      <p>Learning-based ethical hacking concepts and awareness support.</p>
+    </div>
+  </div>
 </section>
 
-<!-- SERVICES -->
+<footer id="contact">
+  <p>© 2026 Ravin Tech Solution. All Rights Reserved.</p>
 
-<section class="services">
-
-<div class="card">
-<h3>Website Design</h3>
-<p>Modern mobile-friendly websites.</p>
-</div>
-
-<div class="card">
-<h3>AI Intro Video</h3>
-<p>Cinematic business intro videos.</p>
-</div>
-
-<div class="card">
-<h3>Cyber Security</h3>
-<p>Protection and secure systems.</p>
-</div>
-
-<div class="card">
-<h3>Ethical Hacking</h3>
-<p>Security testing and vulnerability checks.</p>
-</div>
-
-<div class="card">
-<h3>APK Development</h3>
-<p>Convert websites into Android apps.</p>
-</div>
-
-<div class="card">
-<h3>Game Development</h3>
-<p>3D UI, multiplayer concepts and APK games.</p>
-</div>
-
-</section>
-
-<!-- FOOTER -->
-
-<div class="footer">
-
-<p>
-© 2026 Ravin Tech Solution
-</p>
-
-<a href="https://wa.me/919042458779"
-class="whatsapp-btn">
-
-<i class="fa-brands fa-whatsapp"></i>
-Contact on WhatsApp
-
-</a>
+  <a class="whatsapp" href="https://wa.me/919042458779?text=Hi%20Ravin%20Tech%20Solution">
+    <i class="fa-brands fa-whatsapp"></i> Contact on WhatsApp
+  </a>
+</footer>
 
 </div>
-
-</div>
-
-<!-- SCRIPT -->
-
-<script>
-
-const intro =
-document.getElementById("intro");
-
-const website =
-document.getElementById("website");
-
-/* AFTER INTRO */
-
-setTimeout(()=>{
-
-intro.style.opacity="0";
-
-setTimeout(()=>{
-
-intro.style.display="none";
-
-website.style.display="block";
-
-document.body.style.overflow="auto";
-
-},1000);
-
-},7000);
-
-</script>
 
 </body>
 </html>
