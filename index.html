@@ -57,25 +57,14 @@ min-height:100vh;
 overflow:auto;
 
 background:
-radial-gradient(circle at top left,
-#00d9ff33,
-transparent 35%),
-
-radial-gradient(circle at bottom right,
-#8b5cf644,
-transparent 35%),
-
-linear-gradient(
-135deg,
-#020617,
-#0f172a,
-#000
-);
+radial-gradient(circle at top left,#00d9ff33,transparent 35%),
+radial-gradient(circle at bottom right,#8b5cf644,transparent 35%),
+linear-gradient(135deg,#020617,#0f172a,#000);
 
 animation:websiteBurst 1.5s ease forwards;
 }
 
-/* WEBSITE BURST EFFECT */
+/* WEBSITE BURST */
 
 @keyframes websiteBurst{
 
@@ -105,56 +94,36 @@ NAVBAR
 
 .navbar{
 padding:20px 7%;
-
 display:flex;
 justify-content:space-between;
 align-items:center;
-
 background:rgba(0,0,0,0.45);
-
 backdrop-filter:blur(15px);
-
-border-bottom:
-1px solid rgba(56,189,248,0.25);
+border-bottom:1px solid rgba(56,189,248,0.25);
 }
 
 .logo{
 font-size:26px;
 font-weight:bold;
-
 color:#38bdf8;
-
 letter-spacing:2px;
-
-text-shadow:
-0 0 20px #38bdf8;
+text-shadow:0 0 20px #38bdf8;
 }
 
 .nav a{
 text-decoration:none;
-
 color:white;
-
 margin-left:12px;
-
 padding:10px 18px;
-
 border-radius:30px;
-
-border:
-1px solid rgba(56,189,248,0.4);
-
+border:1px solid rgba(56,189,248,0.4);
 transition:0.3s;
 }
 
 .nav a:hover{
-
 background:#38bdf8;
-
 color:#000;
-
-box-shadow:
-0 0 20px #38bdf8;
+box-shadow:0 0 20px #38bdf8;
 }
 
 /* =========================
@@ -163,79 +132,70 @@ HERO SECTION
 
 .hero{
 min-height:90vh;
-
 display:flex;
 justify-content:center;
 align-items:center;
-
 padding:30px;
-
 text-align:center;
-
 position:relative;
 }
 
-/* BLUE LIGHT EFFECT */
+/* LIGHT EFFECT */
 
 .hero::before{
 content:"";
-
 position:absolute;
-
 width:320px;
 height:320px;
-
 background:#38bdf8;
-
 filter:blur(130px);
-
 opacity:0.35;
-
 border-radius:50%;
 }
 
 /* =========================
-MOUNTED FLOATING PANEL
+SQUARE GLASS BOX
 ========================= */
 
 .hero-box{
 
 position:relative;
 
-max-width:850px;
+width:360px;
+height:360px;
 
-padding:55px 35px;
+padding:28px;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 
 background:
 linear-gradient(
 145deg,
-rgba(15,23,42,0.88),
-rgba(30,41,59,0.65)
+rgba(15,23,42,0.9),
+rgba(30,41,59,0.7)
 );
 
 backdrop-filter:blur(18px);
 
 border:
-1px solid rgba(255,255,255,0.12);
+1px solid rgba(56,189,248,0.35);
 
-border-radius:45px;
+border-radius:35px;
 
 box-shadow:
 0 25px 60px rgba(0,0,0,0.6),
-0 0 40px rgba(56,189,248,0.18),
-inset 0 0 20px rgba(255,255,255,0.04);
-
-transform-style:preserve-3d;
-
-/* MOUNTED ROTATION */
+0 0 45px rgba(56,189,248,0.25),
+inset 0 0 25px rgba(255,255,255,0.05);
 
 animation:mountedPanel 2.2s ease forwards;
 }
 
-/* TOP GLOW LINE */
+/* TOP GLOW */
 
 .hero-box::before{
-
 content:"";
 
 position:absolute;
@@ -258,7 +218,7 @@ box-shadow:
 0 0 20px #38bdf8;
 }
 
-/* PANEL OPEN EFFECT */
+/* ROTATE EFFECT */
 
 @keyframes mountedPanel{
 
@@ -319,21 +279,15 @@ TEXT
 ========================= */
 
 .hero h1{
-font-size:58px;
-
+font-size:42px;
 margin-bottom:20px;
-
 color:#38bdf8;
-
-text-shadow:
-0 0 30px #38bdf8;
+text-shadow:0 0 30px #38bdf8;
 }
 
 .hero p{
-font-size:19px;
-
-line-height:1.8;
-
+font-size:16px;
+line-height:1.7;
 color:#dbeafe;
 }
 
@@ -342,19 +296,12 @@ BUTTON
 ========================= */
 
 .btn{
-
-margin-top:30px;
-
+margin-top:28px;
 padding:15px 35px;
-
 border:none;
-
 border-radius:35px;
-
 font-size:18px;
-
 font-weight:bold;
-
 cursor:pointer;
 
 background:
@@ -365,6 +312,8 @@ linear-gradient(
 );
 
 color:white;
+
+text-decoration:none;
 
 box-shadow:
 0 0 25px rgba(56,189,248,0.8);
@@ -381,41 +330,25 @@ SERVICES
 ========================= */
 
 .services{
-
 padding:40px 7% 70px;
-
 display:grid;
-
 grid-template-columns:
 repeat(auto-fit,minmax(220px,1fr));
-
 gap:22px;
 }
 
 .card{
-
 padding:30px;
-
 border-radius:28px;
-
-background:
-rgba(15,23,42,0.78);
-
-border:
-1px solid rgba(56,189,248,0.25);
-
-box-shadow:
-0 0 25px rgba(0,0,0,0.6);
-
+background:rgba(15,23,42,0.78);
+border:1px solid rgba(56,189,248,0.25);
+box-shadow:0 0 25px rgba(0,0,0,0.6);
 transition:0.3s;
 }
 
 .card:hover{
-
 transform:translateY(-8px);
-
-box-shadow:
-0 0 30px rgba(56,189,248,0.4);
+box-shadow:0 0 30px rgba(56,189,248,0.4);
 }
 
 .card h3{
@@ -428,18 +361,11 @@ FOOTER
 ========================= */
 
 .footer{
-
 padding:30px 20px 45px;
-
 text-align:center;
-
 color:#94a3b8;
-
-border-top:
-1px solid rgba(255,255,255,0.1);
-
-background:
-rgba(0,0,0,0.35);
+border-top:1px solid rgba(255,255,255,0.1);
+background:rgba(0,0,0,0.35);
 }
 
 .footer p{
@@ -451,11 +377,8 @@ WHATSAPP BUTTON
 ========================= */
 
 .whatsapp-btn{
-
 display:inline-block;
-
 padding:15px 34px;
-
 border-radius:40px;
 
 background:
@@ -470,7 +393,6 @@ color:white;
 text-decoration:none;
 
 font-size:18px;
-
 font-weight:bold;
 
 letter-spacing:1px;
@@ -483,7 +405,6 @@ transition:0.4s ease;
 }
 
 .whatsapp-btn:hover{
-
 transform:scale(1.08);
 
 box-shadow:
@@ -519,16 +440,18 @@ margin:5px;
 font-size:14px;
 }
 
+.hero-box{
+width:310px;
+height:310px;
+padding:22px;
+}
+
 .hero h1{
-font-size:35px;
+font-size:28px;
 }
 
 .hero p{
-font-size:16px;
-}
-
-.hero-box{
-padding:40px 22px;
+font-size:14px;
 }
 
 .whatsapp-btn{
@@ -600,9 +523,12 @@ APK apps, game UI, poster designs,
 and futuristic digital experiences.
 </p>
 
-<button class="btn">
+<a href="https://wa.me/919042458779"
+class="btn">
+
 Start Project
-</button>
+
+</a>
 
 </div>
 
@@ -683,7 +609,7 @@ document.getElementById("website");
 
 /*
 Laptop zoom moment →
-Website opens like entering laptop
+Website opens
 */
 
 video.onended = function(){
@@ -705,4 +631,4 @@ document.body.style.overflow="auto";
 </script>
 
 </body>
-</html>
+  </html>
