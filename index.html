@@ -13,12 +13,10 @@
   font-family:Arial, sans-serif;
 }
 
-html{
-  scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth;}
 
 body{
-  background:#03030a;
+  background:#000;
   color:white;
   overflow-x:hidden;
 }
@@ -28,10 +26,9 @@ body{
   inset:0;
   z-index:-3;
   background:
-    radial-gradient(circle at 20% 20%, #2411ff55, transparent 35%),
-    radial-gradient(circle at 80% 30%, #b000ff55, transparent 35%),
-    radial-gradient(circle at 50% 90%, #00ccff33, transparent 40%),
-    #03030a;
+    radial-gradient(circle at top left, rgba(255,0,0,.35), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(180,0,0,.45), transparent 40%),
+    linear-gradient(135deg,#000,#050505,#160000,#000);
 }
 
 .particles{
@@ -39,8 +36,8 @@ body{
   inset:0;
   z-index:-2;
   background-image:
-    linear-gradient(#ffffff22 1px, transparent 1px),
-    linear-gradient(90deg,#ffffff18 1px, transparent 1px);
+    linear-gradient(#ffffff12 1px, transparent 1px),
+    linear-gradient(90deg,#ffffff10 1px, transparent 1px);
   background-size:60px 60px;
   animation:moveGrid 15s linear infinite;
   opacity:.25;
@@ -48,32 +45,32 @@ body{
 
 .orb{
   position:fixed;
-  width:180px;
-  height:180px;
+  width:190px;
+  height:190px;
   border-radius:50%;
-  filter:blur(70px);
-  opacity:.6;
+  filter:blur(75px);
+  opacity:.55;
   z-index:-1;
 }
 
 .orb1{
-  background:#00d9ff;
+  background:#ff0000;
   top:20%;
-  left:10%;
+  left:8%;
   animation:orbMove1 8s infinite alternate;
 }
 
 .orb2{
-  background:#b000ff;
-  top:60%;
-  right:10%;
+  background:#990000;
+  top:58%;
+  right:8%;
   animation:orbMove2 9s infinite alternate;
 }
 
 .orb3{
-  background:#ff3df2;
-  bottom:10%;
-  left:40%;
+  background:#ff3c3c;
+  bottom:8%;
+  left:38%;
   animation:orbMove3 10s infinite alternate;
 }
 
@@ -102,9 +99,7 @@ nav{
   animation:logoGlow 2s infinite alternate;
 }
 
-.logo span{
-  color:#00d9ff;
-}
+.logo span{color:#ff2b2b;}
 
 nav a{
   color:white;
@@ -133,7 +128,7 @@ nav a{
   border-radius:30px;
   background:rgba(255,255,255,.1);
   border:1px solid rgba(255,255,255,.2);
-  color:#00d9ff;
+  color:#ff2b2b;
   margin-bottom:25px;
   animation:slideDown 1s ease, glowBorder 2s infinite;
 }
@@ -146,7 +141,7 @@ nav a{
 }
 
 .hero h1 span{
-  background:linear-gradient(90deg,#00d9ff,#b000ff,#ff3df2);
+  background:linear-gradient(90deg,#ff0000,#ff3b3b,#ffffff);
   -webkit-background-clip:text;
   color:transparent;
 }
@@ -154,7 +149,7 @@ nav a{
 .hero p{
   max-width:650px;
   margin:auto;
-  color:#cfcfff;
+  color:#ddd;
   font-size:18px;
   line-height:1.7;
   margin-bottom:35px;
@@ -162,21 +157,20 @@ nav a{
 
 .btn{
   display:inline-block;
-  padding:16px 30px;
-  background:linear-gradient(90deg,#00d9ff,#8b00ff,#ff3df2);
+  padding:16px 34px;
+  background:linear-gradient(90deg,#ff0000,#cc0000,#ff3b3b);
   background-size:300%;
   color:white;
   text-decoration:none;
-  border-radius:40px;
+  border-radius:50px;
   font-weight:bold;
-  box-shadow:0 0 35px #00d9ff80;
-  transition:.3s;
-  animation:gradientMove 3s infinite linear, pulseGlow 2s infinite;
+  font-size:18px;
+  box-shadow:0 0 20px rgba(255,0,0,.6),0 0 50px rgba(255,0,0,.3);
+  transition:.4s;
+  animation:gradientMove 4s linear infinite, pulseRed 2s infinite;
 }
 
-.btn:hover{
-  transform:scale(1.08);
-}
+.btn:hover{transform:scale(1.08);}
 
 section{
   padding:80px 22px;
@@ -188,9 +182,7 @@ section{
   margin-bottom:45px;
 }
 
-.title span{
-  color:#00d9ff;
-}
+.title span{color:#ff2b2b;}
 
 .cards{
   max-width:1100px;
@@ -224,23 +216,21 @@ section{
   transition:.5s;
 }
 
-.card:hover::before{
-  left:100%;
-}
+.card:hover::before{left:100%;}
 
 .card:hover{
   transform:translateY(-12px) scale(1.02);
-  box-shadow:0 0 35px #00d9ff55;
+  box-shadow:0 0 35px rgba(255,0,0,.5);
 }
 
 .card h3{
-  color:#00d9ff;
+  color:#ff2b2b;
   font-size:22px;
   margin-bottom:15px;
 }
 
 .card p{
-  color:#d0d0e8;
+  color:#ddd;
   line-height:1.6;
 }
 
@@ -255,13 +245,13 @@ section{
   grid-template-columns:1fr 1fr;
   gap:30px;
   align-items:center;
-  box-shadow:0 0 50px rgba(0,217,255,.15);
+  box-shadow:0 0 50px rgba(255,0,0,.15);
 }
 
 .screen{
   height:320px;
   border-radius:25px;
-  background:linear-gradient(135deg,#111,#090030);
+  background:linear-gradient(135deg,#150000,#000);
   border:1px solid rgba(255,255,255,.18);
   display:flex;
   align-items:center;
@@ -276,7 +266,7 @@ section{
   position:absolute;
   width:180px;
   height:180px;
-  background:#00d9ff;
+  background:#ff0000;
   filter:blur(80px);
   animation:moveGlow 5s infinite alternate;
 }
@@ -294,16 +284,14 @@ section{
   font-size:17px;
 }
 
-.contact{
-  text-align:center;
-}
+.contact{text-align:center;}
 
 .contact-box{
   max-width:800px;
   margin:auto;
   padding:45px 25px;
   border-radius:35px;
-  background:linear-gradient(135deg,rgba(0,217,255,.15),rgba(176,0,255,.15));
+  background:linear-gradient(135deg,rgba(255,0,0,.18),rgba(60,0,0,.35));
   border:1px solid rgba(255,255,255,.18);
 }
 
@@ -361,9 +349,13 @@ footer{
   100%{background-position:300%;}
 }
 
-@keyframes pulseGlow{
-  0%,100%{box-shadow:0 0 20px #00d9ff;}
-  50%{box-shadow:0 0 55px #b000ff;}
+@keyframes pulseRed{
+  0%,100%{
+    box-shadow:0 0 20px rgba(255,0,0,.6),0 0 50px rgba(255,0,0,.3);
+  }
+  50%{
+    box-shadow:0 0 35px rgba(255,0,0,1),0 0 90px rgba(255,0,0,.7);
+  }
 }
 
 @keyframes textZoom{
@@ -377,13 +369,13 @@ footer{
 }
 
 @keyframes glowBorder{
-  0%,100%{box-shadow:0 0 10px #00d9ff;}
-  50%{box-shadow:0 0 25px #ff3df2;}
+  0%,100%{box-shadow:0 0 10px #ff0000;}
+  50%{box-shadow:0 0 25px #ff3b3b;}
 }
 
 @keyframes logoGlow{
-  from{text-shadow:0 0 8px #00d9ff;}
-  to{text-shadow:0 0 25px #ff3df2;}
+  from{text-shadow:0 0 8px #ff0000;}
+  to{text-shadow:0 0 25px #ff3b3b;}
 }
 
 @keyframes screenFloat{
@@ -392,8 +384,8 @@ footer{
 }
 
 @keyframes textGlow{
-  from{text-shadow:0 0 10px #00d9ff;}
-  to{text-shadow:0 0 35px #ff3df2;}
+  from{text-shadow:0 0 10px #ff0000;}
+  to{text-shadow:0 0 35px #ff3b3b;}
 }
 
 @keyframes whatsappBounce{
@@ -503,7 +495,7 @@ footer{
 
     <div class="card">
       <h3>Animation UI</h3>
-      <p>Neon glow, glass cards, smooth scroll effects and modern motion style.</p>
+      <p>Red glow, glass cards, smooth scroll effects and modern motion style.</p>
     </div>
   </div>
 </section>
@@ -520,7 +512,7 @@ footer{
       <p>
         Your website is your online identity. We create attractive,
         fast-loading and trust-building websites with a premium digital look.
-        This design uses neon blue, purple glow, glass effect cards,
+        This design uses black and red glow, glass effect cards,
         animated background and smooth mobile layout.
       </p>
     </div>
@@ -558,4 +550,4 @@ window.addEventListener("scroll", () => {
 </script>
 
 </body>
-      </html>
+  </html>
